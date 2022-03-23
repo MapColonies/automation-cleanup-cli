@@ -1,2 +1,2 @@
 # automation-cleanup-cli
-CLI that provide cleanup utility for testing data accross cores
+CLI that provides cleanup utility for testing data accross cores
