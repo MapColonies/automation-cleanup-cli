@@ -1,23 +1,17 @@
 """
 The main module to process automation cleanup
 """
-
+import json
 import os
-from cleanup_cli.wrappers import postgres, s3
 from cleanup_cli.configuration import config
-from cleanup_cli.app import env
-# endpoint_url = os.environ.get('AGENT_URL')
-# if not endpoint_url:
-#     print('AGENT_URL environment not provide -> upload cli with provided variable')
-
-CLEANUP_SOURCE_DIR = '/home/ronenk1/dev/automation-sync-test/clean_test.json'
-CLEAN_CONFIG = ''
+from cleanup_cli.app import env, executers
 
 menu = f"\nChoose one of the following Option:\n" \
        f"[1] - Configure cleanup data file (json)\n" \
        f"[2] - Show Data for deletion\n" \
        f"[3] - Execute Cleanup\n" \
        f"[4] - Configure environment file (json)\n" \
+       f"[5] - Show environment conf (json)\n" \
        f"[0] - Exit"
 
 
@@ -32,9 +26,20 @@ def exit_prog():
 
 
 if __name__ == '__main__':
-    conf = config.load_config()
-    pg_handler = env.set_pg_wrapper(conf['pg_connection'])
-    s3_handler = env.set_s3_wrapper(conf['s3_connection'])
+    conf_dir = os.environ.get('CONF_FILE')
+    if conf_dir:
+        resp = executers.load_json(conf_dir)
+        if resp['state']:
+            conf = resp['content']
+            pg_handler = env.set_pg_wrapper(conf['pg_connection'])
+            s3_handler = env.set_s3_wrapper(conf['s3_connection'])
+        else:
+            conf = 'Not defined'
+            pg_handler = 'Not defined'
+            s3_handler = 'Not defined'
+
+    deletion_directory = 'Not defined'
+    data_file = None
     print('This is MC data cleanup CLI')
     print('Multiple clean option of layers data on environment')
 
@@ -47,24 +52,26 @@ if __name__ == '__main__':
             exit(0)
 
         elif choice == "1":
-            try:
-                resp = agent_api.get_watch_status()
-            except Exception as e:
-                resp = str(e)
-
-            print(f'[{resp}]')
+            deletion_directory = input('Please insert directory to deletion file: ')
+            resp = executers.load_json(deletion_directory)
+            if resp['state']:
+                data_file = resp['content']
+                print(f'Cleanup configured to {json.dumps(data_file, indent=3)}')
+            else:
+                data_file = None
+                print(f'Failed load data to execute cleanup')
             exit_prog()
 
         elif choice == "2":
-            try:
-                resp = agent_api.start_agent_watch()
-            except Exception as e:
-                resp = str(e)
-
-            print(f'[{resp}]')
+            if data_file:
+                print(f'{json.dumps(data_file, indent=3)}')
+            else:
+                print(f'No data file loaded\n'
+                      f'Insert valid json file for data [ chose option <2> ]')
             exit_prog()
 
         elif choice == "3":
+            conf_dir = input('Please insert directory to environment config file: ')
             try:
                 resp = agent_api.stop_agent_watch()
             except Exception as e:
@@ -74,20 +81,27 @@ if __name__ == '__main__':
             exit_prog()
 
         elif choice == "4":
-            path = input('Insert Layer relative path: ')
-            try:
-                resp = agent_api.send_agent_manual_ingest(path)
-            except Exception as e:
-                resp = str(e)
-
-            print(f'[{resp}]')
+            conf_dir = input('Please insert directory to environment config file: ')
+            resp = executers.load_json(conf_dir)
+            if resp['state']:
+                conf = resp['content']
+                pg_handler = env.set_pg_wrapper(conf['pg_connection'])
+                s3_handler = env.set_s3_wrapper(conf['s3_connection'])
+                print(f'Cleanup configured to environment {json.dumps(conf, indent=3)}')
+            else:
+                conf = None
+                pg_handler = 'undefined'
+                s3_handler = 'undefined'
+                print(f'Failed load configuration of cleanup environment')
             exit_prog()
 
         elif choice == "5":
-            url = input('Please insert new url: ')
-            agent_api = discrete_ingestion_executors.DiscreteAgentAdapter(url)
-            print(f'New connection changed to Agent API with url: {url}\n')
-            print(menu)
+            if conf:
+                print(f'{json.dumps(conf, indent=3)}')
+            else:
+                print(f'No data file loaded\n'
+                      f'Insert valid json file for configuration [ chose option <4> ]')
+            exit_prog()
 
         else:
             print(f'Wrong key value was insert [{choice}]')
