@@ -3,7 +3,10 @@ This module provide the cli execution business logic and API
 """
 import os
 import json
-from cleanup_cli.app import env
+from time import sleep
+
+from cleanup_cli.wrappers import env
+from cleanup_cli.wrappers.connection import *
 
 
 def load_json(directory):
@@ -29,32 +32,38 @@ def load_json(directory):
     return results
 
 
-def run_cleanup(data_file):
+def run_cleanup(data_file, pg_handler=None, storage_handler=None, deletion_list=None):
     """
     This method will execute full cleanup according configuration
     :param data_file: layer to delete
+    :param pg_handler: pg connection object
+    :param storage_handler: storage connection object
+    :param deletion_list: dict -> description of what records to cleanup -> default all (None)
     :return: dict -> results
     """
-    tiles_provider = data_file.get('tiles_provider')
-    if tiles_provider.lower() == 's3':
-        s3_credential = data_file.get('s3_connection')
-        if not s3_credential:
-            return {'state': False, 'content': 'Missing key of [s3_connection] on data file'}
-        s3_conn = env.set_s3_wrapper(s3_credential)
+    results = {}
+    for layer in data_file:
+        layer_id = layer['product_id']
+        layer_version = layer['product_version']
+        layer_type = layer.get('product_type')
 
-    elif tiles_provider.lower() == 'fs' or tiles_provider.lower() == 'nfs':
-        print('TBD - Should be implemented')
-        fs_credential = data_file.get('fs_credential')
-        if not fs_credential:
-            return {'state': False, 'content': 'Missing key of [fs_credential] on data file'}
-    else:
-        return {'state': False, 'content': 'Missing key of [tiles_provider] on data file'}
+        if not deletion_list:
+            job_task_pg = pg_handler.delete_job_task_by_layer(product_id=layer_id, product_version=layer_version,
+                                                              product_type=layer_type)
+            layer_spec_pg = pg_handler.delete_tile_counter_by_layer(product_id=layer_id, product_version=layer_version)
+            pycsw_catalog_pg = pg_handler.delete_record_by_layer(product_id=layer_id, product_version=layer_version,
+                                                                 product_type=layer_type)
+            mapproxy_pg = pg_handler.remove_config_mapproxy(product_id=layer_id, product_version=layer_version)
+            agent_pg = pg_handler.remove_agent_db_record(product_id=layer_id, product_version=layer_version)
 
-    pg_credential = data_file.get('pg_connection')
-    if not pg_credential:
-        return {'state': False, 'content': 'Missing key of [pg_connection] on data file'}
+            storage = storage_handler.remove_tiles(layer_name=layer_id)
 
-    pg_conn = env.set_pg_wrapper(pg_credential)
-
-
+            results[layer_id] = {'jobs': job_task_pg,
+                                 'layer_spec': layer_spec_pg,
+                                 'catalog_pycsw': pycsw_catalog_pg,
+                                 'mapproxy': mapproxy_pg,
+                                 'agent': agent_pg,
+                                 'storage': storage}
+    sleep(5)
+    return results
 

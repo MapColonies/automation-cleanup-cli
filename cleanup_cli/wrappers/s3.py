@@ -119,7 +119,7 @@ class S3Handler:
             _log.error(err)
             raise ConnectionError(err)
 
-    def clean_layer_from_s3(self, layer_name):
+    def clean_layer(self, layer_name):
         """
         This method will validate exists of layer's tiles on s3 and remove tiles
         :param layer_name: represent the object key inside the configured bucket
@@ -153,7 +153,7 @@ class S3Handler:
                       f'Result deletion state: [{remove_results["msg"]}]\n'
                       f'Result extra data: [{json.dumps(remove_results["extra"], indent=3)}]')
 
-            _log.info('\n' + stringy.pad_with_minus('S3 tiles cleaning', length=140) + '\n')
+            _log.info('\n' + stringy.pad_with_minus('End S3 tiles cleaning', length=140) + '\n')
             return {'state': True, 'msg': f'Layer - {layer_name}, deleted {len(list_of_tiles)} items'}
 
         except Exception as e:
