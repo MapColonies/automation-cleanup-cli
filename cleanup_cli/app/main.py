@@ -81,7 +81,7 @@ if __name__ == '__main__':
                 storage_handler = connection.StorageManager(env.set_s3_wrapper(conf['s3_connection']))
 
             elif conf['tiles_provider'].lower() == 'fs' or conf['tiles_provider'].lower() == 'nfs':
-                storage_handler = connection.StorageManager(env.set_s3_wrapper(conf['s3_connection']))
+                storage_handler = connection.StorageManager(env.set_fs_wrapper(conf['fs_connection']))
         else:
             conf = None
             pg_handler = None
@@ -142,13 +142,13 @@ if __name__ == '__main__':
                     storage_handler = connection.StorageManager(env.set_s3_wrapper(conf['s3_connection']))
 
                 elif conf['tiles_provider'].lower() == 'fs' or conf['tiles_provider'].lower() == 'nfs':
-                    storage_handler = env.set_s3_wrapper(conf['fs_connection'])  # should be implemented
+                    storage_handler = env.set_fs_wrapper(conf['fs_connection'])  # should be implemented
 
                 print(f'Cleanup configured to environment {json.dumps(conf, indent=3)}')
             else:
                 conf = None
-                pg_handler = 'undefined'
-                storage_handler = 'undefined'
+                pg_handler = None
+                storage_handler = None
                 print(f'Failed load configuration of cleanup environment')
             exit_prog()
 

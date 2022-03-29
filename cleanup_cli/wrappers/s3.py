@@ -6,7 +6,7 @@ import json
 from mc_automation_tools import s3storage
 from mc_automation_tools.parse import stringy
 
-_log = logging.getLogger('sync_tester.cleanup_cli.s3')
+_log = logging.getLogger('cleanup_cli.wrappers.s3')
 
 
 class S3Handler:
