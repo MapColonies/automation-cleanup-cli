@@ -1,1 +1,1 @@
-cleanup-cli:0.1.dev5.g08d7f06.d20220329
+cleanup-cli:0.0.1
