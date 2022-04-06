@@ -1,1 +1,1 @@
-cleanup-cli:0.0.2.dev3.g5245f2e
+automation-cleanup-cli:0.0.3

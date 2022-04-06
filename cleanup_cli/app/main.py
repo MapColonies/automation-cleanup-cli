@@ -142,7 +142,7 @@ if __name__ == '__main__':
                     storage_handler = connection.StorageManager(env.set_s3_wrapper(conf['s3_connection']))
 
                 elif conf['tiles_provider'].lower() == 'fs' or conf['tiles_provider'].lower() == 'nfs':
-                    storage_handler = env.set_fs_wrapper(conf['fs_connection'])  # should be implemented
+                    storage_handler = connection.StorageManager(env.set_fs_wrapper(conf['fs_connection']))  # should be implemented
 
                 print(f'Cleanup configured to environment {json.dumps(conf, indent=3)}')
             else:
