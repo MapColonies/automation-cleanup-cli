@@ -48,15 +48,20 @@ def run_cleanup(data_file, pg_handler=None, storage_handler=None, deletion_list=
         layer_type = layer.get('product_type')
 
         if not deletion_list:
+            tiles_storage_params = pg_handler.get_tiles_path_convention(product_id=layer_id)
+            identifier = tiles_storage_params['identifier']
+            display_path = tiles_storage_params['display_path']
+            tiles_path_convention = f"{identifier}/{display_path}"
             job_task_pg = pg_handler.delete_job_task_by_layer(product_id=layer_id, product_version=layer_version,
                                                               product_type=layer_type)
             layer_spec_pg = pg_handler.delete_tile_counter_by_layer(product_id=layer_id, product_version=layer_version)
             pycsw_catalog_pg = pg_handler.delete_record_by_layer(product_id=layer_id, product_version=layer_version,
                                                                  product_type=layer_type)
             mapproxy_pg = pg_handler.remove_config_mapproxy(product_id=layer_id, product_version=layer_version)
+            # mapproxy_pg = {}
             agent_pg = pg_handler.remove_agent_db_record(product_id=layer_id, product_version=layer_version)
-
-            storage = storage_handler.remove_tiles(layer_name=layer_id)
+            # todo: add the new convention
+            storage = storage_handler.remove_tiles(layer_name=tiles_path_convention)
 
             results[layer_id] = {'jobs': job_task_pg,
                                  'layer_spec': layer_spec_pg,
@@ -66,4 +71,3 @@ def run_cleanup(data_file, pg_handler=None, storage_handler=None, deletion_list=
                                  'storage': storage}
     sleep(5)
     return results
-

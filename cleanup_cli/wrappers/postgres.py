@@ -404,9 +404,9 @@ class PostgresHandler:
 
         # todo - may change to single layer type -> orthophoto on future sync version
         orthophoto = "-".join([product_id, "Orthophoto"])
-        orthophotoHistory = "-".join([product_id, product_version, "OrthophotoHistory"])
+        # orthophotoHistory = "-".join([product_id, product_version, "OrthophotoHistory"])
 
-        layers_names = [orthophoto, orthophotoHistory]
+        layers_names = [orthophoto]
         layers = {layer: pg_conn.get_by_json_key(table_name=self.__mapproxy_config_table,
                                                  pk="data",
                                                  canonic_keys=criteria,
@@ -523,3 +523,19 @@ class PostgresHandler:
         _log.info('\n' + stringy.pad_with_minus('End of Agent DB deletion', length=140) + '\n')
 
         return report
+
+    # ============================================ records ========================================================
+
+    def get_tiles_path_convention(self, product_id):
+        """
+        This method return identifier and display path for tiles storage convention concatenation
+        """
+        pg_conn = self._get_connection_to_scheme(self.__catalog_manager_scheme)
+        criteria = {
+            'product_id': product_id
+        }
+        tiles_path_parameters = pg_conn.get_rows_by_keys(table_name=self.__catalog_records_table,
+                                                         keys_values=criteria,
+                                                         return_as_dict=True
+                                                         )
+        return tiles_path_parameters

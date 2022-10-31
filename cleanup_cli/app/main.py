@@ -5,7 +5,6 @@ import logging
 import json
 import os
 from datetime import datetime
-
 from cleanup_cli.app import executers
 from cleanup_cli.wrappers import env, connection
 
