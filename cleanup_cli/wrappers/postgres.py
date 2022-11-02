@@ -539,3 +539,27 @@ class PostgresHandler:
                                                          return_as_dict=True
                                                          )
         return tiles_path_parameters
+
+    def parse_cleanup_data(self, cleanup_data):
+        json_obj = {}
+        for k, v in cleanup_data.items():
+            json_obj["product_id"] = k
+            json_obj["product_version"] = v
+
+        return json_obj
+
+    def get_daily_cleanup_data(self):
+        """
+        This method return json object that contains list of layers to be deleted
+        """
+        pg_conn = self._get_connection_to_scheme(self.__catalog_manager_scheme)
+        data_to_delete = pg_conn.make_sql_query(table_name=self.__catalog_records_table,)
+        cleanup_format = {}
+        for layer in data_to_delete:
+            cleanup_format["product_id"] = layer[0]
+            cleanup_format["product_version"] = layer[1]
+
+        print(cleanup_format)
+        return cleanup_format
+
+
