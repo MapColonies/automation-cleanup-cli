@@ -553,13 +553,21 @@ class PostgresHandler:
         This method return json object that contains list of layers to be deleted
         """
         pg_conn = self._get_connection_to_scheme(self.__catalog_manager_scheme)
-        data_to_delete = pg_conn.make_sql_query(table_name=self.__catalog_records_table,)
-        cleanup_format = {}
+        data_to_delete = pg_conn.get_columns_with_like_stetements(table_name=self.__catalog_records_table,
+                                                                 condition_param= "or",
+                                                                 pk="product_id",
+                                                                 identifiers=["test", "ci", "automation"],
+                                                                 columns="product_id, product_version")
+        cleanup_format = []
         for layer in data_to_delete:
-            cleanup_format["product_id"] = layer[0]
-            cleanup_format["product_version"] = layer[1]
+            layer_values = {}
+            layer_values["product_id"] = layer[0]
+            layer_values["product_version"] = layer[1]
+            cleanup_format.append(layer_values)
+        with open("data_to_delete.json", "w") as f:
+            json_object = json.dumps(cleanup_format)
+            f.write(json_object)
+            json.dumps(cleanup_format)
 
-        print(cleanup_format)
+        # print(cleanup_format)
         return cleanup_format
-
-
