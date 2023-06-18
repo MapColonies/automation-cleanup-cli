@@ -553,11 +553,11 @@ class PostgresHandler:
         This method return json object that contains list of layers to be deleted
         """
         pg_conn = self._get_connection_to_scheme(self.__catalog_manager_scheme)
-        data_to_delete = pg_conn.get_columns_with_like_stetements(table_name=self.__catalog_records_table,
-                                                                 condition_param= "or",
-                                                                 pk="product_id",
-                                                                 identifiers=["test", "ci", "automation"],
-                                                                 columns="product_id, product_version")
+        data_to_delete = pg_conn.get_columns_by_like_statements(table_name=self.__catalog_records_table,
+                                                                condition_param="or",
+                                                                pk="product_id",
+                                                                identifiers=["test", "ci", "automation", "check"],
+                                                                columns="product_id, product_version")
         cleanup_format = []
         for layer in data_to_delete:
             layer_values = {}
