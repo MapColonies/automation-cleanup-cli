@@ -10,8 +10,8 @@ spec:
       template:
         spec:
           containers:
-            - name: automation_cleanup
-              image: automation_cleanup:1.0.0
+            - name: automation-cleanup
+              image: acrarolibotnonprod.azurecr.io/automation_cleanup:1.0.0
               env:
                 - name: CONF_FILE
                   value: "/layerSources/shay_avr/configuration_cleanup.json"

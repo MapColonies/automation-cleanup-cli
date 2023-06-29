@@ -3,6 +3,10 @@ import os
 from cleanup_cli.app import executers
 from cleanup_cli.wrappers import env, connection
 
+"""
+Script for deleting all ingestion tests data such as tile,db records, and mapproxy after running the tests set - used to clean the 
+resources and storage from unnecessary data 
+"""
 conf_dir = os.environ.get('CONF_FILE')
 storage_handler = None
 if conf_dir:
@@ -16,6 +20,7 @@ if conf_dir:
             storage_handler = connection.StorageManager(env.set_fs_wrapper(conf['fs_connection']))
         data_to_clean = pg_handler.get_daily_cleanup_data()
         try:
+            print("start running cleanup")
             resp = executers.run_cleanup(data_file=data_to_clean, pg_handler=pg_handler,
                                          storage_handler=storage_handler)
         except Exception as e:

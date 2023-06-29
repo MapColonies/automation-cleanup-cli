@@ -9,7 +9,3 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 ENV CONF_FILE =$CONF_FILE
 
 CMD ["python","cleanup_script.py"]
-
-
-
-
