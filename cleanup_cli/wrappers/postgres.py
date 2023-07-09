@@ -7,7 +7,8 @@ import copy
 from mc_automation_tools import postgres
 from mc_automation_tools.parse import stringy
 
-_log = logging.getLogger('sync_tester.cleanup_cli.postgres')
+# _log = logging.getLogger('sync_tester.cleanup_cli.postgres')
+_log = logging.getLogger('cleanup_logger')
 
 
 class PostgresHandler:
@@ -404,9 +405,10 @@ class PostgresHandler:
 
         # todo - may change to single layer type -> orthophoto on future sync version
         orthophoto = "-".join([product_id, "Orthophoto"])
-        orthophotoHistory = "-".join([product_id, product_version, "OrthophotoHistory"])
+        orthophotoBest = "-".join([product_id, "OrthophotoBest"])
+        orthophotoHistory = "-".join([product_id, "OrthophotoHistory"])
 
-        layers_names = [orthophoto, orthophotoHistory]
+        layers_names = [orthophoto, orthophotoHistory, orthophotoBest]
         layers = {layer: pg_conn.get_by_json_key(table_name=self.__mapproxy_config_table,
                                                  pk="data",
                                                  canonic_keys=criteria,
@@ -523,3 +525,51 @@ class PostgresHandler:
         _log.info('\n' + stringy.pad_with_minus('End of Agent DB deletion', length=140) + '\n')
 
         return report
+
+    # ============================================ records ========================================================
+
+    def get_tiles_path_convention(self, product_id):
+        """
+        This method return identifier and display path for tiles storage convention concatenation
+        """
+        pg_conn = self._get_connection_to_scheme(self.__catalog_manager_scheme)
+        criteria = {
+            'product_id': product_id
+        }
+        tiles_path_parameters = pg_conn.get_rows_by_keys(table_name=self.__catalog_records_table,
+                                                         keys_values=criteria,
+                                                         return_as_dict=True
+                                                         )
+        return tiles_path_parameters
+
+    def parse_cleanup_data(self, cleanup_data):
+        json_obj = {}
+        for k, v in cleanup_data.items():
+            json_obj["product_id"] = k
+            json_obj["product_version"] = v
+
+        return json_obj
+
+    def get_daily_cleanup_data(self):
+        """
+        This method return json object that contains list of layers to be deleted
+        """
+        pg_conn = self._get_connection_to_scheme(self.__catalog_manager_scheme)
+        data_to_delete = pg_conn.get_columns_by_like_statements(table_name=self.__catalog_records_table,
+                                                                condition_param="or",
+                                                                pk="product_id",
+                                                                identifiers=["test", "ci", "automation", "check"],
+                                                                columns="product_id, product_version")
+        cleanup_format = []
+        for layer in data_to_delete:
+            layer_values = {}
+            layer_values["product_id"] = layer[0]
+            layer_values["product_version"] = layer[1]
+            cleanup_format.append(layer_values)
+        with open("data_to_delete.json", "w") as f:
+            json_object = json.dumps(cleanup_format)
+            f.write(json_object)
+            json.dumps(cleanup_format)
+
+        # print(cleanup_format)
+        return cleanup_format

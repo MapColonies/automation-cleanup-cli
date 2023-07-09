@@ -1,0 +1,21 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: automation-cleanup
+spec:
+  #run the cleanup every Monday and Thursday once a week
+  schedule: "0 0 * * 1,4"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: automation-cleanup
+              image: acrarolibotnonprod.azurecr.io/automation_cleanup:1.0.0
+              env:
+                - name: CONF_FILE
+                  value: "/layerSources/shay_avr/configuration_cleanup.json"
+                - name: LOGS_FILE_PATH
+                  value: "/layerSources/automation_logs"
+
+          restartPolicy: OnFailure
