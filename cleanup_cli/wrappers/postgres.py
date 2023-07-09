@@ -7,7 +7,8 @@ import copy
 from mc_automation_tools import postgres
 from mc_automation_tools.parse import stringy
 
-_log = logging.getLogger('sync_tester.cleanup_cli.postgres')
+# _log = logging.getLogger('sync_tester.cleanup_cli.postgres')
+_log = logging.getLogger('cleanup_logger')
 
 
 class PostgresHandler:
@@ -404,9 +405,10 @@ class PostgresHandler:
 
         # todo - may change to single layer type -> orthophoto on future sync version
         orthophoto = "-".join([product_id, "Orthophoto"])
-        # orthophotoHistory = "-".join([product_id, product_version, "OrthophotoHistory"])
+        orthophotoBest = "-".join([product_id, "OrthophotoBest"])
+        orthophotoHistory = "-".join([product_id, "OrthophotoHistory"])
 
-        layers_names = [orthophoto]
+        layers_names = [orthophoto, orthophotoHistory, orthophotoBest]
         layers = {layer: pg_conn.get_by_json_key(table_name=self.__mapproxy_config_table,
                                                  pk="data",
                                                  canonic_keys=criteria,

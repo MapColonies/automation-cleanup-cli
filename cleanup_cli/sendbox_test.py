@@ -1,7 +1,7 @@
 import os
 
-from build.lib.cleanup_cli.app import executers
-from build.lib.cleanup_cli.wrappers import postgres
+from cleanup_cli.app import executers
+from cleanup_cli.wrappers import postgres
 from cleanup_cli.wrappers import env, connection
 
 data_to_clean = os.environ.get('DELETE_FILE')
@@ -20,8 +20,6 @@ else:
     conf = None
     pg_handler = None
     storage_handler = None
-
-
 
     results = {}
 

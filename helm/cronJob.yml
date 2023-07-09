@@ -15,5 +15,7 @@ spec:
               env:
                 - name: CONF_FILE
                   value: "/layerSources/shay_avr/configuration_cleanup.json"
+                - name: LOGS_FILE_PATH
+                  value: "/layerSources/automation_logs"
 
           restartPolicy: OnFailure
