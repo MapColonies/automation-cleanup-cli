@@ -6,8 +6,8 @@ from cleanup_cli.app import executers
 from cleanup_cli.wrappers import env, connection
 
 """
-Script for deleting all ingestion tests data such as tile,db records, and mapproxy after running the tests set - used to clean the 
-resources and storage from unnecessary data 
+Script for deleting all ingestion tests data such as tile,db records, and mapproxy after running the tests set - 
+used to clean the resources and storage from unnecessary data 
 """
 now = datetime.datetime.now()
 current_date = now.strftime("%Y-%m-%d")

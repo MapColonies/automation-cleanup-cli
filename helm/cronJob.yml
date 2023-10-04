@@ -4,18 +4,26 @@ metadata:
   name: automation-cleanup
 spec:
   #run the cleanup every Monday and Thursday once a week
-  schedule: "0 0 * * 1,4"
+  #  schedule: "0 0 * * 1,4"
+  schedule: "0 0 1 * *"
   jobTemplate:
     spec:
       template:
         spec:
+          volumes:
+            - name: automation-sources
+              persistentVolumeClaim:
+                claimName: automation-pvc
           containers:
             - name: automation-cleanup
-              image: acrarolibotnonprod.azurecr.io/automation_cleanup:1.0.0
+              image: acrarolibotnonprod.azurecr.io/automation_cleanup:2.0.0
+              volumeMounts:
+                - name: automation-sources
+                  mountPath: /automationSources
+                  subPath: automation-sources
               env:
                 - name: CONF_FILE
-                  value: "/layerSources/shay_avr/configuration_cleanup.json"
+                  value: "/automationSources/configuration_cleanup.json"
                 - name: LOGS_FILE_PATH
-                  value: "/layerSources/automation_logs"
-
+                  value: "/automationSources/automation_logs"
           restartPolicy: OnFailure
