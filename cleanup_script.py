@@ -45,14 +45,14 @@ if conf_dir:
             logger.info("No data was found to clean")
         else:
             logger.info(f"Data to clean : {data_to_clean}")
-        try:
-            logger.info("Start running cleanup")
-            resp = executers.run_cleanup(data_file=data_to_clean, pg_handler=pg_handler,
-                                         storage_handler=storage_handler)
-            logger.info('Cleanup script execution completed')
-        except Exception as e:
-            resp = str(e)
-            logger.error(resp)
+            try:
+                logger.info("Start running cleanup")
+                resp = executers.run_cleanup(data_file=data_to_clean, pg_handler=pg_handler,
+                                             storage_handler=storage_handler)
+                logger.info('Cleanup script execution completed')
+            except Exception as e:
+                resp = str(e)
+                logger.error(resp)
             # print(json.dumps(resp))
     else:
         logger.error('Configuration file content is invalid')

@@ -558,7 +558,7 @@ class PostgresHandler:
         data_to_delete = pg_conn.get_columns_by_like_statements(table_name=self.__catalog_records_table,
                                                                 condition_param="or",
                                                                 pk="product_id",
-                                                                identifiers=["test", "ci", "automation", "check"],
+                                                                identifiers=["automation"],
                                                                 columns="product_id, product_version")
         cleanup_format = []
         for layer in data_to_delete:
