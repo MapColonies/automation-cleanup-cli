@@ -5,8 +5,6 @@ import os
 import json
 from time import sleep
 
-from mc_automation_tools.base_requests import send_delete_request
-
 from cleanup_cli.wrappers import env
 from cleanup_cli.wrappers.connection import *
 
@@ -34,27 +32,7 @@ def load_json(directory):
     return results
 
 
-# def delete_layer_mapproxy_config( layer_names, mapproxy_route):
-#     """
-#     This method will execute clean on mapproxy config DB and remove related layer's configs
-#     :param layer_names: list -> layer to delete
-#     :return: dict => {state: bool, msg: dict}
-#     """
-#     result = []
-#     for layer_name in layer_names:
-#         layer_name = "-".join([layer_name, "OrthophotoBest"])
-#         resp = send_delete_request(url=mapproxy_route, params=layer_name)
-#
-#         # pg_conn = self._get_connection_to_scheme(self.__mapproxy_scheme)
-#         # resp = pg_conn.delete_by_json_key(table_name=self.__mapproxy_config_table,
-#         #                                   pk="data",
-#         #                                   canonic_keys=["caches"],
-#         #                                   value=layer_name)
-#         result.append({"layer": layer_name, "result": resp})
-#     return result
-
-
-def run_cleanup(data_file, mapproxy_route, pg_handler=None, storage_handler=None, deletion_list=None):
+def run_cleanup(data_file, pg_handler=None, storage_handler=None, deletion_list=None):
     """
     This method will execute full cleanup according configuration
     :param data_file: layer to delete
@@ -81,10 +59,8 @@ def run_cleanup(data_file, mapproxy_route, pg_handler=None, storage_handler=None
                 # layer_spec_pg = pg_handler.delete_tile_counter_by_layer(product_id=layer_id, product_version=layer_version)
                 pycsw_catalog_pg = pg_handler.delete_record_by_layer(product_id=layer_id, product_version=layer_version,
                                                                      product_type=layer_type)
-                # mapproxy_pg = pg_handler.remove_config_mapproxy(product_id=layer_id, product_version=layer_version,
-                #                                                 mapproxy_route=mapproxy_route)
+                mapproxy_pg = pg_handler.remove_config_mapproxy(product_id=layer_id, product_version=layer_version)
                 # agent_pg = pg_handler.remove_agent_db_record(product_id=layer_id, product_version=layer_version)
-                mapproxy_pg = pg_handler._delete_mapproxy_config(layer_name=layer_id, mapproxy_route=mapproxy_route)
                 storage = storage_handler.remove_tiles(layer_name=tiles_path_convention)
 
                 results[layer_id] = {'jobs': job_task_pg,

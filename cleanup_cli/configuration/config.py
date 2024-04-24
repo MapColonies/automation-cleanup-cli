@@ -14,3 +14,5 @@ def load_config():
     with open(CONF_FILE, 'r') as fp:
         conf = json.load(fp)
         return conf
+
+
