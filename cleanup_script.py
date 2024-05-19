@@ -25,7 +25,6 @@ file_handler.setFormatter(formatter)
 
 logger.addHandler(file_handler)
 
-
 conf_dir = os.environ.get('CONF_FILE')
 
 storage_handler = None
@@ -44,6 +43,8 @@ if conf_dir:
             logger.info(f"Tiles provider - {conf['tiles_provider']} ")
             storage_handler = connection.StorageManager(env.set_fs_wrapper(conf['fs_connection']))
         mapproxy_config_route = conf["mapproxy_config_route"]
+        job_manager_route = conf["job_manager_route"]
+        raster_catalog_route = conf["raster_catalog_route"]
         logger.info("Collecting tests data to delete")
         data_to_clean = pg_handler.get_daily_cleanup_data()
         if not data_to_clean:
@@ -53,7 +54,9 @@ if conf_dir:
             try:
                 logger.info("Start running cleanup")
                 resp = executers.run_cleanup(data_file=data_to_clean, pg_handler=pg_handler,
-                                             storage_handler=storage_handler, mapproxy_route=mapproxy_config_route)
+                                             storage_handler=storage_handler, mapproxy_route=mapproxy_config_route,
+                                             job_manager_route=job_manager_route,
+                                             raster_catalog_route=raster_catalog_route)
                 logger.info('Cleanup script execution completed')
             except Exception as e:
                 resp = str(e)

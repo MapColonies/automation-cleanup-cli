@@ -1,0 +1,1675 @@
+[
+  {
+    "id": "c8a1a728-3d82-4a94-b3ad-0f3d66347bc7",
+    "jobId": "012391e2-9585-4f7a-91d5-b7c99de1baf6",
+    "type": "tilesMerging",
+    "description": "",
+    "parameters": {
+      "batches": [
+        {
+          "maxX": 153,
+          "maxY": 88,
+          "minX": 152,
+          "minY": 87,
+          "zoom": 7
+        },
+        {
+          "maxX": 154,
+          "maxY": 88,
+          "minX": 153,
+          "minY": 87,
+          "zoom": 7
+        }
+      ],
+      "sources": [
+        {
+          "path": "212e4f4e-5502-4399-b89b-374c570a72f5/0f46e68e-39e4-49bd-9eea-fc5b852c5bbd",
+          "type": "S3"
+        },
+        {
+          "grid": "2X1",
+          "path": "test_dir/tiles_cache_Basic_layer_4m_libot_update_test.gpkg",
+          "type": "GPKG",
+          "extent": {
+            "maxX": 35.37597717328861,
+            "maxY": 32.947998391903226,
+            "minX": 35.024411528661574,
+            "minY": 32.79419004139809
+          }
+        }
+      ],
+      "isNewTarget": true,
+      "targetFormat": "JPEG"
+    },
+    "status": "Completed",
+    "percentage": 100,
+    "reason": "",
+    "attempts": 0,
+    "resettable": true,
+    "blockDuplication": false,
+    "created": "2024-05-15T11:58:40.488Z",
+    "updated": "2024-05-15T11:58:51.169Z"
+  },
+  {
+    "id": "fdb7cf03-24d1-41a1-a2b1-0125db904ce5",
+    "jobId": "012391e2-9585-4f7a-91d5-b7c99de1baf6",
+    "type": "tilesMerging",
+    "description": "",
+    "parameters": {
+      "batches": [
+        {
+          "maxX": 77,
+          "maxY": 44,
+          "minX": 76,
+          "minY": 43,
+          "zoom": 6
+        }
+      ],
+      "sources": [
+        {
+          "path": "212e4f4e-5502-4399-b89b-374c570a72f5/0f46e68e-39e4-49bd-9eea-fc5b852c5bbd",
+          "type": "S3"
+        },
+        {
+          "grid": "2X1",
+          "path": "test_dir/tiles_cache_Basic_layer_4m_libot_update_test.gpkg",
+          "type": "GPKG",
+          "extent": {
+            "maxX": 35.37597717328861,
+            "maxY": 32.947998391903226,
+            "minX": 35.024411528661574,
+            "minY": 32.79419004139809
+          }
+        }
+      ],
+      "isNewTarget": true,
+      "targetFormat": "JPEG"
+    },
+    "status": "Completed",
+    "percentage": 100,
+    "reason": "",
+    "attempts": 0,
+    "resettable": true,
+    "blockDuplication": false,
+    "created": "2024-05-15T11:58:40.488Z",
+    "updated": "2024-05-15T11:58:51.724Z"
+  },
+  {
+    "id": "eca63a38-1941-470a-aa08-a704bbdebac6",
+    "jobId": "012391e2-9585-4f7a-91d5-b7c99de1baf6",
+    "type": "tilesMerging",
+    "description": "",
+    "parameters": {
+      "batches": [
+        {
+          "maxX": 5,
+          "maxY": 3,
+          "minX": 4,
+          "minY": 2,
+          "zoom": 2
+        }
+      ],
+      "sources": [
+        {
+          "path": "212e4f4e-5502-4399-b89b-374c570a72f5/0f46e68e-39e4-49bd-9eea-fc5b852c5bbd",
+          "type": "S3"
+        },
+        {
+          "grid": "2X1",
+          "path": "test_dir/tiles_cache_Basic_layer_4m_libot_update_test.gpkg",
+          "type": "GPKG",
+          "extent": {
+            "maxX": 35.37597717328861,
+            "maxY": 32.947998391903226,
+            "minX": 35.024411528661574,
+            "minY": 32.79419004139809
+          }
+        }
+      ],
+      "isNewTarget": true,
+      "targetFormat": "JPEG"
+    },
+    "status": "Completed",
+    "percentage": 100,
+    "reason": "",
+    "attempts": 0,
+    "resettable": true,
+    "blockDuplication": false,
+    "created": "2024-05-15T11:58:40.488Z",
+    "updated": "2024-05-15T11:58:53.935Z"
+  },
+  {
+    "id": "7656e32b-6128-4322-88d6-da54075d7d05",
+    "jobId": "012391e2-9585-4f7a-91d5-b7c99de1baf6",
+    "type": "tilesMerging",
+    "description": "",
+    "parameters": {
+      "batches": [
+        {
+          "maxX": 3,
+          "maxY": 2,
+          "minX": 2,
+          "minY": 1,
+          "zoom": 1
+        }
+      ],
+      "sources": [
+        {
+          "path": "212e4f4e-5502-4399-b89b-374c570a72f5/0f46e68e-39e4-49bd-9eea-fc5b852c5bbd",
+          "type": "S3"
+        },
+        {
+          "grid": "2X1",
+          "path": "test_dir/tiles_cache_Basic_layer_4m_libot_update_test.gpkg",
+          "type": "GPKG",
+          "extent": {
+            "maxX": 35.37597717328861,
+            "maxY": 32.947998391903226,
+            "minX": 35.024411528661574,
+            "minY": 32.79419004139809
+          }
+        }
+      ],
+      "isNewTarget": true,
+      "targetFormat": "JPEG"
+    },
+    "status": "Completed",
+    "percentage": 100,
+    "reason": "",
+    "attempts": 0,
+    "resettable": true,
+    "blockDuplication": false,
+    "created": "2024-05-15T11:58:40.488Z",
+    "updated": "2024-05-15T11:58:54.535Z"
+  },
+  {
+    "id": "add9de42-454f-4826-b99d-f9ca6a48c40e",
+    "jobId": "012391e2-9585-4f7a-91d5-b7c99de1baf6",
+    "type": "tilesMerging",
+    "description": "",
+    "parameters": {
+      "batches": [
+        {
+          "maxX": 4893,
+          "maxY": 2795,
+          "minX": 4892,
+          "minY": 2794,
+          "zoom": 12
+        },
+        {
+          "maxX": 4894,
+          "maxY": 2795,
+          "minX": 4893,
+          "minY": 2794,
+          "zoom": 12
+        },
+        {
+          "maxX": 4893,
+          "maxY": 2796,
+          "minX": 4892,
+          "minY": 2795,
+          "zoom": 12
+        },
+        {
+          "maxX": 4894,
+          "maxY": 2796,
+          "minX": 4893,
+          "minY": 2795,
+          "zoom": 12
+        },
+        {
+          "maxX": 4895,
+          "maxY": 2795,
+          "minX": 4894,
+          "minY": 2794,
+          "zoom": 12
+        },
+        {
+          "maxX": 4896,
+          "maxY": 2795,
+          "minX": 4895,
+          "minY": 2794,
+          "zoom": 12
+        },
+        {
+          "maxX": 4895,
+          "maxY": 2796,
+          "minX": 4894,
+          "minY": 2795,
+          "zoom": 12
+        },
+        {
+          "maxX": 4896,
+          "maxY": 2796,
+          "minX": 4895,
+          "minY": 2795,
+          "zoom": 12
+        },
+        {
+          "maxX": 4893,
+          "maxY": 2797,
+          "minX": 4892,
+          "minY": 2796,
+          "zoom": 12
+        },
+        {
+          "maxX": 4894,
+          "maxY": 2797,
+          "minX": 4893,
+          "minY": 2796,
+          "zoom": 12
+        },
+        {
+          "maxX": 4894,
+          "maxY": 2798,
+          "minX": 4893,
+          "minY": 2797,
+          "zoom": 12
+        },
+        {
+          "maxX": 4895,
+          "maxY": 2797,
+          "minX": 4894,
+          "minY": 2796,
+          "zoom": 12
+        },
+        {
+          "maxX": 4896,
+          "maxY": 2797,
+          "minX": 4895,
+          "minY": 2796,
+          "zoom": 12
+        },
+        {
+          "maxX": 4895,
+          "maxY": 2798,
+          "minX": 4894,
+          "minY": 2797,
+          "zoom": 12
+        },
+        {
+          "maxX": 4896,
+          "maxY": 2798,
+          "minX": 4895,
+          "minY": 2797,
+          "zoom": 12
+        },
+        {
+          "maxX": 4897,
+          "maxY": 2795,
+          "minX": 4896,
+          "minY": 2794,
+          "zoom": 12
+        },
+        {
+          "maxX": 4898,
+          "maxY": 2795,
+          "minX": 4897,
+          "minY": 2794,
+          "zoom": 12
+        },
+        {
+          "maxX": 4897,
+          "maxY": 2796,
+          "minX": 4896,
+          "minY": 2795,
+          "zoom": 12
+        },
+        {
+          "maxX": 4898,
+          "maxY": 2796,
+          "minX": 4897,
+          "minY": 2795,
+          "zoom": 12
+        },
+        {
+          "maxX": 4899,
+          "maxY": 2795,
+          "minX": 4898,
+          "minY": 2794,
+          "zoom": 12
+        },
+        {
+          "maxX": 4900,
+          "maxY": 2795,
+          "minX": 4899,
+          "minY": 2794,
+          "zoom": 12
+        },
+        {
+          "maxX": 4899,
+          "maxY": 2796,
+          "minX": 4898,
+          "minY": 2795,
+          "zoom": 12
+        },
+        {
+          "maxX": 4900,
+          "maxY": 2796,
+          "minX": 4899,
+          "minY": 2795,
+          "zoom": 12
+        },
+        {
+          "maxX": 4901,
+          "maxY": 2795,
+          "minX": 4900,
+          "minY": 2794,
+          "zoom": 12
+        },
+        {
+          "maxX": 4902,
+          "maxY": 2795,
+          "minX": 4901,
+          "minY": 2794,
+          "zoom": 12
+        },
+        {
+          "maxX": 4901,
+          "maxY": 2796,
+          "minX": 4900,
+          "minY": 2795,
+          "zoom": 12
+        },
+        {
+          "maxX": 4902,
+          "maxY": 2796,
+          "minX": 4901,
+          "minY": 2795,
+          "zoom": 12
+        },
+        {
+          "maxX": 4897,
+          "maxY": 2797,
+          "minX": 4896,
+          "minY": 2796,
+          "zoom": 12
+        },
+        {
+          "maxX": 4898,
+          "maxY": 2797,
+          "minX": 4897,
+          "minY": 2796,
+          "zoom": 12
+        },
+        {
+          "maxX": 4897,
+          "maxY": 2798,
+          "minX": 4896,
+          "minY": 2797,
+          "zoom": 12
+        },
+        {
+          "maxX": 4898,
+          "maxY": 2798,
+          "minX": 4897,
+          "minY": 2797,
+          "zoom": 12
+        },
+        {
+          "maxX": 4899,
+          "maxY": 2797,
+          "minX": 4898,
+          "minY": 2796,
+          "zoom": 12
+        },
+        {
+          "maxX": 4900,
+          "maxY": 2797,
+          "minX": 4899,
+          "minY": 2796,
+          "zoom": 12
+        },
+        {
+          "maxX": 4899,
+          "maxY": 2798,
+          "minX": 4898,
+          "minY": 2797,
+          "zoom": 12
+        },
+        {
+          "maxX": 4900,
+          "maxY": 2798,
+          "minX": 4899,
+          "minY": 2797,
+          "zoom": 12
+        },
+        {
+          "maxX": 4901,
+          "maxY": 2797,
+          "minX": 4900,
+          "minY": 2796,
+          "zoom": 12
+        },
+        {
+          "maxX": 4902,
+          "maxY": 2797,
+          "minX": 4901,
+          "minY": 2796,
+          "zoom": 12
+        },
+        {
+          "maxX": 4901,
+          "maxY": 2798,
+          "minX": 4900,
+          "minY": 2797,
+          "zoom": 12
+        },
+        {
+          "maxX": 4902,
+          "maxY": 2798,
+          "minX": 4901,
+          "minY": 2797,
+          "zoom": 12
+        }
+      ],
+      "sources": [
+        {
+          "path": "212e4f4e-5502-4399-b89b-374c570a72f5/0f46e68e-39e4-49bd-9eea-fc5b852c5bbd",
+          "type": "S3"
+        },
+        {
+          "grid": "2X1",
+          "path": "test_dir/tiles_cache_Basic_layer_4m_libot_update_test.gpkg",
+          "type": "GPKG",
+          "extent": {
+            "maxX": 35.37597717328861,
+            "maxY": 32.947998391903226,
+            "minX": 35.024411528661574,
+            "minY": 32.79419004139809
+          }
+        }
+      ],
+      "isNewTarget": true,
+      "targetFormat": "JPEG"
+    },
+    "status": "Completed",
+    "percentage": 100,
+    "reason": "",
+    "attempts": 0,
+    "resettable": true,
+    "blockDuplication": false,
+    "created": "2024-05-15T11:58:40.488Z",
+    "updated": "2024-05-15T11:58:46.235Z"
+  },
+  {
+    "id": "f708f20d-5569-492a-a5a1-6ee226f32ec5",
+    "jobId": "012391e2-9585-4f7a-91d5-b7c99de1baf6",
+    "type": "tilesMerging",
+    "description": "",
+    "parameters": {
+      "batches": [
+        {
+          "maxX": 306,
+          "maxY": 175,
+          "minX": 305,
+          "minY": 174,
+          "zoom": 8
+        },
+        {
+          "maxX": 307,
+          "maxY": 175,
+          "minX": 306,
+          "minY": 174,
+          "zoom": 8
+        }
+      ],
+      "sources": [
+        {
+          "path": "212e4f4e-5502-4399-b89b-374c570a72f5/0f46e68e-39e4-49bd-9eea-fc5b852c5bbd",
+          "type": "S3"
+        },
+        {
+          "grid": "2X1",
+          "path": "test_dir/tiles_cache_Basic_layer_4m_libot_update_test.gpkg",
+          "type": "GPKG",
+          "extent": {
+            "maxX": 35.37597717328861,
+            "maxY": 32.947998391903226,
+            "minX": 35.024411528661574,
+            "minY": 32.79419004139809
+          }
+        }
+      ],
+      "isNewTarget": true,
+      "targetFormat": "JPEG"
+    },
+    "status": "Completed",
+    "percentage": 100,
+    "reason": "",
+    "attempts": 0,
+    "resettable": true,
+    "blockDuplication": false,
+    "created": "2024-05-15T11:58:40.488Z",
+    "updated": "2024-05-15T11:58:50.588Z"
+  },
+  {
+    "id": "470e85a3-b25a-4207-96ae-60dc29affcdf",
+    "jobId": "012391e2-9585-4f7a-91d5-b7c99de1baf6",
+    "type": "tilesMerging",
+    "description": "",
+    "parameters": {
+      "batches": [
+        {
+          "maxX": 2447,
+          "maxY": 1398,
+          "minX": 2446,
+          "minY": 1397,
+          "zoom": 11
+        },
+        {
+          "maxX": 2448,
+          "maxY": 1398,
+          "minX": 2447,
+          "minY": 1397,
+          "zoom": 11
+        },
+        {
+          "maxX": 2447,
+          "maxY": 1399,
+          "minX": 2446,
+          "minY": 1398,
+          "zoom": 11
+        },
+        {
+          "maxX": 2448,
+          "maxY": 1399,
+          "minX": 2447,
+          "minY": 1398,
+          "zoom": 11
+        },
+        {
+          "maxX": 2449,
+          "maxY": 1398,
+          "minX": 2448,
+          "minY": 1397,
+          "zoom": 11
+        },
+        {
+          "maxX": 2450,
+          "maxY": 1398,
+          "minX": 2449,
+          "minY": 1397,
+          "zoom": 11
+        },
+        {
+          "maxX": 2451,
+          "maxY": 1398,
+          "minX": 2450,
+          "minY": 1397,
+          "zoom": 11
+        },
+        {
+          "maxX": 2449,
+          "maxY": 1399,
+          "minX": 2448,
+          "minY": 1398,
+          "zoom": 11
+        },
+        {
+          "maxX": 2450,
+          "maxY": 1399,
+          "minX": 2449,
+          "minY": 1398,
+          "zoom": 11
+        },
+        {
+          "maxX": 2451,
+          "maxY": 1399,
+          "minX": 2450,
+          "minY": 1398,
+          "zoom": 11
+        }
+      ],
+      "sources": [
+        {
+          "path": "212e4f4e-5502-4399-b89b-374c570a72f5/0f46e68e-39e4-49bd-9eea-fc5b852c5bbd",
+          "type": "S3"
+        },
+        {
+          "grid": "2X1",
+          "path": "test_dir/tiles_cache_Basic_layer_4m_libot_update_test.gpkg",
+          "type": "GPKG",
+          "extent": {
+            "maxX": 35.37597717328861,
+            "maxY": 32.947998391903226,
+            "minX": 35.024411528661574,
+            "minY": 32.79419004139809
+          }
+        }
+      ],
+      "isNewTarget": true,
+      "targetFormat": "JPEG"
+    },
+    "status": "Completed",
+    "percentage": 100,
+    "reason": "",
+    "attempts": 0,
+    "resettable": true,
+    "blockDuplication": false,
+    "created": "2024-05-15T11:58:40.488Z",
+    "updated": "2024-05-15T11:58:47.865Z"
+  },
+  {
+    "id": "a1a0f9e2-b82d-428f-8806-b4988dda847e",
+    "jobId": "012391e2-9585-4f7a-91d5-b7c99de1baf6",
+    "type": "tilesMerging",
+    "description": "",
+    "parameters": {
+      "batches": [
+        {
+          "maxX": 612,
+          "maxY": 350,
+          "minX": 611,
+          "minY": 349,
+          "zoom": 9
+        },
+        {
+          "maxX": 613,
+          "maxY": 350,
+          "minX": 612,
+          "minY": 349,
+          "zoom": 9
+        }
+      ],
+      "sources": [
+        {
+          "path": "212e4f4e-5502-4399-b89b-374c570a72f5/0f46e68e-39e4-49bd-9eea-fc5b852c5bbd",
+          "type": "S3"
+        },
+        {
+          "grid": "2X1",
+          "path": "test_dir/tiles_cache_Basic_layer_4m_libot_update_test.gpkg",
+          "type": "GPKG",
+          "extent": {
+            "maxX": 35.37597717328861,
+            "maxY": 32.947998391903226,
+            "minX": 35.024411528661574,
+            "minY": 32.79419004139809
+          }
+        }
+      ],
+      "isNewTarget": true,
+      "targetFormat": "JPEG"
+    },
+    "status": "Completed",
+    "percentage": 100,
+    "reason": "",
+    "attempts": 0,
+    "resettable": true,
+    "blockDuplication": false,
+    "created": "2024-05-15T11:58:40.488Z",
+    "updated": "2024-05-15T11:58:49.844Z"
+  },
+  {
+    "id": "50a43b61-6907-401a-b54c-78de23a23f77",
+    "jobId": "012391e2-9585-4f7a-91d5-b7c99de1baf6",
+    "type": "tilesMerging",
+    "description": "",
+    "parameters": {
+      "batches": [
+        {
+          "maxX": 2,
+          "maxY": 1,
+          "minX": 1,
+          "minY": 0,
+          "zoom": 0
+        }
+      ],
+      "sources": [
+        {
+          "path": "212e4f4e-5502-4399-b89b-374c570a72f5/0f46e68e-39e4-49bd-9eea-fc5b852c5bbd",
+          "type": "S3"
+        },
+        {
+          "grid": "2X1",
+          "path": "test_dir/tiles_cache_Basic_layer_4m_libot_update_test.gpkg",
+          "type": "GPKG",
+          "extent": {
+            "maxX": 35.37597717328861,
+            "maxY": 32.947998391903226,
+            "minX": 35.024411528661574,
+            "minY": 32.79419004139809
+          }
+        }
+      ],
+      "isNewTarget": true,
+      "targetFormat": "JPEG"
+    },
+    "status": "Completed",
+    "percentage": 100,
+    "reason": "",
+    "attempts": 0,
+    "resettable": true,
+    "blockDuplication": false,
+    "created": "2024-05-15T11:58:40.488Z",
+    "updated": "2024-05-15T11:58:54.660Z"
+  },
+  {
+    "id": "f91f5bd9-a284-4eb6-8937-d91fa824ac79",
+    "jobId": "012391e2-9585-4f7a-91d5-b7c99de1baf6",
+    "type": "tilesMerging",
+    "description": "",
+    "parameters": {
+      "batches": [
+        {
+          "maxX": 1224,
+          "maxY": 699,
+          "minX": 1223,
+          "minY": 698,
+          "zoom": 10
+        },
+        {
+          "maxX": 1224,
+          "maxY": 700,
+          "minX": 1223,
+          "minY": 699,
+          "zoom": 10
+        },
+        {
+          "maxX": 1225,
+          "maxY": 699,
+          "minX": 1224,
+          "minY": 698,
+          "zoom": 10
+        },
+        {
+          "maxX": 1226,
+          "maxY": 699,
+          "minX": 1225,
+          "minY": 698,
+          "zoom": 10
+        },
+        {
+          "maxX": 1225,
+          "maxY": 700,
+          "minX": 1224,
+          "minY": 699,
+          "zoom": 10
+        },
+        {
+          "maxX": 1226,
+          "maxY": 700,
+          "minX": 1225,
+          "minY": 699,
+          "zoom": 10
+        }
+      ],
+      "sources": [
+        {
+          "path": "212e4f4e-5502-4399-b89b-374c570a72f5/0f46e68e-39e4-49bd-9eea-fc5b852c5bbd",
+          "type": "S3"
+        },
+        {
+          "grid": "2X1",
+          "path": "test_dir/tiles_cache_Basic_layer_4m_libot_update_test.gpkg",
+          "type": "GPKG",
+          "extent": {
+            "maxX": 35.37597717328861,
+            "maxY": 32.947998391903226,
+            "minX": 35.024411528661574,
+            "minY": 32.79419004139809
+          }
+        }
+      ],
+      "isNewTarget": true,
+      "targetFormat": "JPEG"
+    },
+    "status": "Completed",
+    "percentage": 100,
+    "reason": "",
+    "attempts": 0,
+    "resettable": true,
+    "blockDuplication": false,
+    "created": "2024-05-15T11:58:40.488Z",
+    "updated": "2024-05-15T11:58:49.079Z"
+  },
+  {
+    "id": "2a96a48b-d713-43b2-a3df-9f23a0ef0ff3",
+    "jobId": "012391e2-9585-4f7a-91d5-b7c99de1baf6",
+    "type": "tilesMerging",
+    "description": "",
+    "parameters": {
+      "batches": [
+        {
+          "maxX": 39,
+          "maxY": 22,
+          "minX": 38,
+          "minY": 21,
+          "zoom": 5
+        }
+      ],
+      "sources": [
+        {
+          "path": "212e4f4e-5502-4399-b89b-374c570a72f5/0f46e68e-39e4-49bd-9eea-fc5b852c5bbd",
+          "type": "S3"
+        },
+        {
+          "grid": "2X1",
+          "path": "test_dir/tiles_cache_Basic_layer_4m_libot_update_test.gpkg",
+          "type": "GPKG",
+          "extent": {
+            "maxX": 35.37597717328861,
+            "maxY": 32.947998391903226,
+            "minX": 35.024411528661574,
+            "minY": 32.79419004139809
+          }
+        }
+      ],
+      "isNewTarget": true,
+      "targetFormat": "JPEG"
+    },
+    "status": "Completed",
+    "percentage": 100,
+    "reason": "",
+    "attempts": 0,
+    "resettable": true,
+    "blockDuplication": false,
+    "created": "2024-05-15T11:58:40.488Z",
+    "updated": "2024-05-15T11:58:52.268Z"
+  },
+  {
+    "id": "3aac77a6-195a-45eb-a5cd-204f740040d3",
+    "jobId": "012391e2-9585-4f7a-91d5-b7c99de1baf6",
+    "type": "tilesMerging",
+    "description": "",
+    "parameters": {
+      "batches": [
+        {
+          "maxX": 20,
+          "maxY": 11,
+          "minX": 19,
+          "minY": 10,
+          "zoom": 4
+        }
+      ],
+      "sources": [
+        {
+          "path": "212e4f4e-5502-4399-b89b-374c570a72f5/0f46e68e-39e4-49bd-9eea-fc5b852c5bbd",
+          "type": "S3"
+        },
+        {
+          "grid": "2X1",
+          "path": "test_dir/tiles_cache_Basic_layer_4m_libot_update_test.gpkg",
+          "type": "GPKG",
+          "extent": {
+            "maxX": 35.37597717328861,
+            "maxY": 32.947998391903226,
+            "minX": 35.024411528661574,
+            "minY": 32.79419004139809
+          }
+        }
+      ],
+      "isNewTarget": true,
+      "targetFormat": "JPEG"
+    },
+    "status": "Completed",
+    "percentage": 100,
+    "reason": "",
+    "attempts": 0,
+    "resettable": true,
+    "blockDuplication": false,
+    "created": "2024-05-15T11:58:40.488Z",
+    "updated": "2024-05-15T11:58:52.794Z"
+  },
+  {
+    "id": "98faeb51-876e-40de-9b43-c954314d2289",
+    "jobId": "012391e2-9585-4f7a-91d5-b7c99de1baf6",
+    "type": "tilesMerging",
+    "description": "",
+    "parameters": {
+      "batches": [
+        {
+          "maxX": 10,
+          "maxY": 6,
+          "minX": 9,
+          "minY": 5,
+          "zoom": 3
+        }
+      ],
+      "sources": [
+        {
+          "path": "212e4f4e-5502-4399-b89b-374c570a72f5/0f46e68e-39e4-49bd-9eea-fc5b852c5bbd",
+          "type": "S3"
+        },
+        {
+          "grid": "2X1",
+          "path": "test_dir/tiles_cache_Basic_layer_4m_libot_update_test.gpkg",
+          "type": "GPKG",
+          "extent": {
+            "maxX": 35.37597717328861,
+            "maxY": 32.947998391903226,
+            "minX": 35.024411528661574,
+            "minY": 32.79419004139809
+          }
+        }
+      ],
+      "isNewTarget": true,
+      "targetFormat": "JPEG"
+    },
+    "status": "Completed",
+    "percentage": 100,
+    "reason": "",
+    "attempts": 0,
+    "resettable": true,
+    "blockDuplication": false,
+    "created": "2024-05-15T11:58:40.488Z",
+    "updated": "2024-05-15T11:58:53.372Z"
+  },
+  {
+    "id": "e1643e9b-5831-460b-b604-fccaf80bdfc9",
+    "jobId": "012391e2-9585-4f7a-91d5-b7c99de1baf6",
+    "type": "tilesMerging",
+    "description": "",
+    "parameters": {
+      "batches": [
+        {
+          "maxX": 9786,
+          "maxY": 5589,
+          "minX": 9785,
+          "minY": 5588,
+          "zoom": 13
+        },
+        {
+          "maxX": 9786,
+          "maxY": 5590,
+          "minX": 9785,
+          "minY": 5589,
+          "zoom": 13
+        },
+        {
+          "maxX": 9787,
+          "maxY": 5589,
+          "minX": 9786,
+          "minY": 5588,
+          "zoom": 13
+        },
+        {
+          "maxX": 9788,
+          "maxY": 5589,
+          "minX": 9787,
+          "minY": 5588,
+          "zoom": 13
+        },
+        {
+          "maxX": 9787,
+          "maxY": 5590,
+          "minX": 9786,
+          "minY": 5589,
+          "zoom": 13
+        },
+        {
+          "maxX": 9788,
+          "maxY": 5590,
+          "minX": 9787,
+          "minY": 5589,
+          "zoom": 13
+        },
+        {
+          "maxX": 9786,
+          "maxY": 5591,
+          "minX": 9785,
+          "minY": 5590,
+          "zoom": 13
+        },
+        {
+          "maxX": 9786,
+          "maxY": 5592,
+          "minX": 9785,
+          "minY": 5591,
+          "zoom": 13
+        },
+        {
+          "maxX": 9788,
+          "maxY": 5592,
+          "minX": 9786,
+          "minY": 5590,
+          "zoom": 13
+        },
+        {
+          "maxX": 9789,
+          "maxY": 5589,
+          "minX": 9788,
+          "minY": 5588,
+          "zoom": 13
+        },
+        {
+          "maxX": 9790,
+          "maxY": 5589,
+          "minX": 9789,
+          "minY": 5588,
+          "zoom": 13
+        },
+        {
+          "maxX": 9789,
+          "maxY": 5590,
+          "minX": 9788,
+          "minY": 5589,
+          "zoom": 13
+        },
+        {
+          "maxX": 9790,
+          "maxY": 5590,
+          "minX": 9789,
+          "minY": 5589,
+          "zoom": 13
+        },
+        {
+          "maxX": 9791,
+          "maxY": 5589,
+          "minX": 9790,
+          "minY": 5588,
+          "zoom": 13
+        },
+        {
+          "maxX": 9792,
+          "maxY": 5589,
+          "minX": 9791,
+          "minY": 5588,
+          "zoom": 13
+        },
+        {
+          "maxX": 9791,
+          "maxY": 5590,
+          "minX": 9790,
+          "minY": 5589,
+          "zoom": 13
+        },
+        {
+          "maxX": 9792,
+          "maxY": 5590,
+          "minX": 9791,
+          "minY": 5589,
+          "zoom": 13
+        },
+        {
+          "maxX": 9790,
+          "maxY": 5592,
+          "minX": 9788,
+          "minY": 5590,
+          "zoom": 13
+        },
+        {
+          "maxX": 9792,
+          "maxY": 5592,
+          "minX": 9790,
+          "minY": 5590,
+          "zoom": 13
+        },
+        {
+          "maxX": 9786,
+          "maxY": 5593,
+          "minX": 9785,
+          "minY": 5592,
+          "zoom": 13
+        },
+        {
+          "maxX": 9786,
+          "maxY": 5594,
+          "minX": 9785,
+          "minY": 5593,
+          "zoom": 13
+        },
+        {
+          "maxX": 9787,
+          "maxY": 5593,
+          "minX": 9786,
+          "minY": 5592,
+          "zoom": 13
+        },
+        {
+          "maxX": 9788,
+          "maxY": 5593,
+          "minX": 9787,
+          "minY": 5592,
+          "zoom": 13
+        },
+        {
+          "maxX": 9787,
+          "maxY": 5594,
+          "minX": 9786,
+          "minY": 5593,
+          "zoom": 13
+        },
+        {
+          "maxX": 9788,
+          "maxY": 5594,
+          "minX": 9787,
+          "minY": 5593,
+          "zoom": 13
+        },
+        {
+          "maxX": 9787,
+          "maxY": 5595,
+          "minX": 9786,
+          "minY": 5594,
+          "zoom": 13
+        },
+        {
+          "maxX": 9788,
+          "maxY": 5595,
+          "minX": 9787,
+          "minY": 5594,
+          "zoom": 13
+        },
+        {
+          "maxX": 9787,
+          "maxY": 5596,
+          "minX": 9786,
+          "minY": 5595,
+          "zoom": 13
+        },
+        {
+          "maxX": 9788,
+          "maxY": 5596,
+          "minX": 9787,
+          "minY": 5595,
+          "zoom": 13
+        },
+        {
+          "maxX": 9790,
+          "maxY": 5594,
+          "minX": 9788,
+          "minY": 5592,
+          "zoom": 13
+        },
+        {
+          "maxX": 9792,
+          "maxY": 5594,
+          "minX": 9790,
+          "minY": 5592,
+          "zoom": 13
+        },
+        {
+          "maxX": 9789,
+          "maxY": 5595,
+          "minX": 9788,
+          "minY": 5594,
+          "zoom": 13
+        },
+        {
+          "maxX": 9790,
+          "maxY": 5595,
+          "minX": 9789,
+          "minY": 5594,
+          "zoom": 13
+        },
+        {
+          "maxX": 9789,
+          "maxY": 5596,
+          "minX": 9788,
+          "minY": 5595,
+          "zoom": 13
+        },
+        {
+          "maxX": 9790,
+          "maxY": 5596,
+          "minX": 9789,
+          "minY": 5595,
+          "zoom": 13
+        },
+        {
+          "maxX": 9791,
+          "maxY": 5595,
+          "minX": 9790,
+          "minY": 5594,
+          "zoom": 13
+        },
+        {
+          "maxX": 9792,
+          "maxY": 5595,
+          "minX": 9791,
+          "minY": 5594,
+          "zoom": 13
+        },
+        {
+          "maxX": 9791,
+          "maxY": 5596,
+          "minX": 9790,
+          "minY": 5595,
+          "zoom": 13
+        },
+        {
+          "maxX": 9792,
+          "maxY": 5596,
+          "minX": 9791,
+          "minY": 5595,
+          "zoom": 13
+        },
+        {
+          "maxX": 9793,
+          "maxY": 5589,
+          "minX": 9792,
+          "minY": 5588,
+          "zoom": 13
+        },
+        {
+          "maxX": 9794,
+          "maxY": 5589,
+          "minX": 9793,
+          "minY": 5588,
+          "zoom": 13
+        },
+        {
+          "maxX": 9793,
+          "maxY": 5590,
+          "minX": 9792,
+          "minY": 5589,
+          "zoom": 13
+        },
+        {
+          "maxX": 9794,
+          "maxY": 5590,
+          "minX": 9793,
+          "minY": 5589,
+          "zoom": 13
+        },
+        {
+          "maxX": 9795,
+          "maxY": 5589,
+          "minX": 9794,
+          "minY": 5588,
+          "zoom": 13
+        },
+        {
+          "maxX": 9796,
+          "maxY": 5589,
+          "minX": 9795,
+          "minY": 5588,
+          "zoom": 13
+        },
+        {
+          "maxX": 9795,
+          "maxY": 5590,
+          "minX": 9794,
+          "minY": 5589,
+          "zoom": 13
+        },
+        {
+          "maxX": 9796,
+          "maxY": 5590,
+          "minX": 9795,
+          "minY": 5589,
+          "zoom": 13
+        },
+        {
+          "maxX": 9794,
+          "maxY": 5592,
+          "minX": 9792,
+          "minY": 5590,
+          "zoom": 13
+        },
+        {
+          "maxX": 9796,
+          "maxY": 5592,
+          "minX": 9794,
+          "minY": 5590,
+          "zoom": 13
+        },
+        {
+          "maxX": 9797,
+          "maxY": 5589,
+          "minX": 9796,
+          "minY": 5588,
+          "zoom": 13
+        },
+        {
+          "maxX": 9798,
+          "maxY": 5589,
+          "minX": 9797,
+          "minY": 5588,
+          "zoom": 13
+        },
+        {
+          "maxX": 9797,
+          "maxY": 5590,
+          "minX": 9796,
+          "minY": 5589,
+          "zoom": 13
+        },
+        {
+          "maxX": 9798,
+          "maxY": 5590,
+          "minX": 9797,
+          "minY": 5589,
+          "zoom": 13
+        },
+        {
+          "maxX": 9799,
+          "maxY": 5589,
+          "minX": 9798,
+          "minY": 5588,
+          "zoom": 13
+        },
+        {
+          "maxX": 9800,
+          "maxY": 5589,
+          "minX": 9799,
+          "minY": 5588,
+          "zoom": 13
+        },
+        {
+          "maxX": 9799,
+          "maxY": 5590,
+          "minX": 9798,
+          "minY": 5589,
+          "zoom": 13
+        },
+        {
+          "maxX": 9800,
+          "maxY": 5590,
+          "minX": 9799,
+          "minY": 5589,
+          "zoom": 13
+        },
+        {
+          "maxX": 9798,
+          "maxY": 5592,
+          "minX": 9796,
+          "minY": 5590,
+          "zoom": 13
+        },
+        {
+          "maxX": 9800,
+          "maxY": 5592,
+          "minX": 9798,
+          "minY": 5590,
+          "zoom": 13
+        },
+        {
+          "maxX": 9801,
+          "maxY": 5589,
+          "minX": 9800,
+          "minY": 5588,
+          "zoom": 13
+        },
+        {
+          "maxX": 9802,
+          "maxY": 5589,
+          "minX": 9801,
+          "minY": 5588,
+          "zoom": 13
+        },
+        {
+          "maxX": 9801,
+          "maxY": 5590,
+          "minX": 9800,
+          "minY": 5589,
+          "zoom": 13
+        },
+        {
+          "maxX": 9802,
+          "maxY": 5590,
+          "minX": 9801,
+          "minY": 5589,
+          "zoom": 13
+        },
+        {
+          "maxX": 9803,
+          "maxY": 5589,
+          "minX": 9802,
+          "minY": 5588,
+          "zoom": 13
+        },
+        {
+          "maxX": 9803,
+          "maxY": 5590,
+          "minX": 9802,
+          "minY": 5589,
+          "zoom": 13
+        },
+        {
+          "maxX": 9802,
+          "maxY": 5592,
+          "minX": 9800,
+          "minY": 5590,
+          "zoom": 13
+        },
+        {
+          "maxX": 9803,
+          "maxY": 5591,
+          "minX": 9802,
+          "minY": 5590,
+          "zoom": 13
+        },
+        {
+          "maxX": 9803,
+          "maxY": 5592,
+          "minX": 9802,
+          "minY": 5591,
+          "zoom": 13
+        },
+        {
+          "maxX": 9794,
+          "maxY": 5594,
+          "minX": 9792,
+          "minY": 5592,
+          "zoom": 13
+        },
+        {
+          "maxX": 9796,
+          "maxY": 5594,
+          "minX": 9794,
+          "minY": 5592,
+          "zoom": 13
+        },
+        {
+          "maxX": 9793,
+          "maxY": 5595,
+          "minX": 9792,
+          "minY": 5594,
+          "zoom": 13
+        },
+        {
+          "maxX": 9794,
+          "maxY": 5595,
+          "minX": 9793,
+          "minY": 5594,
+          "zoom": 13
+        },
+        {
+          "maxX": 9793,
+          "maxY": 5596,
+          "minX": 9792,
+          "minY": 5595,
+          "zoom": 13
+        },
+        {
+          "maxX": 9794,
+          "maxY": 5596,
+          "minX": 9793,
+          "minY": 5595,
+          "zoom": 13
+        },
+        {
+          "maxX": 9795,
+          "maxY": 5595,
+          "minX": 9794,
+          "minY": 5594,
+          "zoom": 13
+        },
+        {
+          "maxX": 9796,
+          "maxY": 5595,
+          "minX": 9795,
+          "minY": 5594,
+          "zoom": 13
+        },
+        {
+          "maxX": 9795,
+          "maxY": 5596,
+          "minX": 9794,
+          "minY": 5595,
+          "zoom": 13
+        },
+        {
+          "maxX": 9796,
+          "maxY": 5596,
+          "minX": 9795,
+          "minY": 5595,
+          "zoom": 13
+        },
+        {
+          "maxX": 9798,
+          "maxY": 5594,
+          "minX": 9796,
+          "minY": 5592,
+          "zoom": 13
+        },
+        {
+          "maxX": 9800,
+          "maxY": 5594,
+          "minX": 9798,
+          "minY": 5592,
+          "zoom": 13
+        },
+        {
+          "maxX": 9797,
+          "maxY": 5595,
+          "minX": 9796,
+          "minY": 5594,
+          "zoom": 13
+        },
+        {
+          "maxX": 9798,
+          "maxY": 5595,
+          "minX": 9797,
+          "minY": 5594,
+          "zoom": 13
+        },
+        {
+          "maxX": 9797,
+          "maxY": 5596,
+          "minX": 9796,
+          "minY": 5595,
+          "zoom": 13
+        },
+        {
+          "maxX": 9798,
+          "maxY": 5596,
+          "minX": 9797,
+          "minY": 5595,
+          "zoom": 13
+        },
+        {
+          "maxX": 9799,
+          "maxY": 5595,
+          "minX": 9798,
+          "minY": 5594,
+          "zoom": 13
+        },
+        {
+          "maxX": 9800,
+          "maxY": 5595,
+          "minX": 9799,
+          "minY": 5594,
+          "zoom": 13
+        },
+        {
+          "maxX": 9799,
+          "maxY": 5596,
+          "minX": 9798,
+          "minY": 5595,
+          "zoom": 13
+        },
+        {
+          "maxX": 9800,
+          "maxY": 5596,
+          "minX": 9799,
+          "minY": 5595,
+          "zoom": 13
+        },
+        {
+          "maxX": 9802,
+          "maxY": 5594,
+          "minX": 9800,
+          "minY": 5592,
+          "zoom": 13
+        },
+        {
+          "maxX": 9803,
+          "maxY": 5593,
+          "minX": 9802,
+          "minY": 5592,
+          "zoom": 13
+        },
+        {
+          "maxX": 9803,
+          "maxY": 5594,
+          "minX": 9802,
+          "minY": 5593,
+          "zoom": 13
+        },
+        {
+          "maxX": 9801,
+          "maxY": 5595,
+          "minX": 9800,
+          "minY": 5594,
+          "zoom": 13
+        },
+        {
+          "maxX": 9802,
+          "maxY": 5595,
+          "minX": 9801,
+          "minY": 5594,
+          "zoom": 13
+        },
+        {
+          "maxX": 9801,
+          "maxY": 5596,
+          "minX": 9800,
+          "minY": 5595,
+          "zoom": 13
+        },
+        {
+          "maxX": 9802,
+          "maxY": 5596,
+          "minX": 9801,
+          "minY": 5595,
+          "zoom": 13
+        },
+        {
+          "maxX": 9803,
+          "maxY": 5595,
+          "minX": 9802,
+          "minY": 5594,
+          "zoom": 13
+        },
+        {
+          "maxX": 9803,
+          "maxY": 5596,
+          "minX": 9802,
+          "minY": 5595,
+          "zoom": 13
+        }
+      ],
+      "sources": [
+        {
+          "path": "212e4f4e-5502-4399-b89b-374c570a72f5/0f46e68e-39e4-49bd-9eea-fc5b852c5bbd",
+          "type": "S3"
+        },
+        {
+          "grid": "2X1",
+          "path": "test_dir/tiles_cache_Basic_layer_4m_libot_update_test.gpkg",
+          "type": "GPKG",
+          "extent": {
+            "maxX": 35.37597717328861,
+            "maxY": 32.947998391903226,
+            "minX": 35.024411528661574,
+            "minY": 32.79419004139809
+          }
+        }
+      ],
+      "isNewTarget": true,
+      "targetFormat": "JPEG"
+    },
+    "status": "Completed",
+    "percentage": 100,
+    "reason": "",
+    "attempts": 0,
+    "resettable": true,
+    "blockDuplication": false,
+    "created": "2024-05-15T11:58:40.488Z",
+    "updated": "2024-05-15T11:58:54.159Z"
+  }
+]

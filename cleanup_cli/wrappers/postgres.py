@@ -99,17 +99,17 @@ class PostgresHandler:
     def get_class_params(self):
         params = {
 
-                'job_manager': {
-                    'name': self.__job_manager_scheme,
-                    'jobs_table': self.__job_manager_jobs_table,
-                    'tasks_table': self.__job_manager_tasks_table
-                },
-                'mapproxy': {
-                    'name': self.__mapproxy_scheme,
-                    'mapproxy_config_table': self.__mapproxy_config_table,
-                    'mapproxy_config_index': self.__mapproxy_config_index
-                }
+            'job_manager': {
+                'name': self.__job_manager_scheme,
+                'jobs_table': self.__job_manager_jobs_table,
+                'tasks_table': self.__job_manager_tasks_table
+            },
+            'mapproxy': {
+                'name': self.__mapproxy_scheme,
+                'mapproxy_config_table': self.__mapproxy_config_table,
+                'mapproxy_config_index': self.__mapproxy_config_index
             }
+        }
 
         return params
 
@@ -365,7 +365,7 @@ class PostgresHandler:
 
     # ============================================= Mapproxy config ====================================================
 
-    def _delete_mapproxy_config(self, layer_name,mapproxy_route):
+    def _delete_mapproxy_config(self, layer_name, mapproxy_route):
         """
         This method will execute clean on mapproxy config DB and remove related layer's configs
         :param layer_names: list -> layer to delete
@@ -374,13 +374,13 @@ class PostgresHandler:
         result = []
         # for layer_name in layer_names:
         layer_name = "-".join([layer_name, "OrthophotoBest"])
-        resp = requests.delete(url=mapproxy_route, params={'layerNames':layer_name})
+        resp = requests.delete(url=mapproxy_route, params={'layerNames': layer_name})
 
-            # pg_conn = self._get_connection_to_scheme(self.__mapproxy_scheme)
-            # resp = pg_conn.delete_by_json_key(table_name=self.__mapproxy_config_table,
-            #                                   pk="data",
-            #                                   canonic_keys=["caches"],
-            #                                   value=layer_name)
+        # pg_conn = self._get_connection_to_scheme(self.__mapproxy_scheme)
+        # resp = pg_conn.delete_by_json_key(table_name=self.__mapproxy_config_table,
+        #                                   pk="data",
+        #                                   canonic_keys=["caches"],
+        #                                   value=layer_name)
         result.append({"layer": layer_name, "result": resp})
         return result
 
@@ -410,37 +410,37 @@ class PostgresHandler:
 
         return layers
 
-    def remove_config_mapproxy(self, product_id, product_version, mapproxy_route):
-        """
-        This method will execute clean on raster mapproxy config DB and remove related configs with related layer
-        :param product_id: string [layer's id]
-        :param product_version: string [layer's version]
-        :return: dict => {state: bool, msg: dict}
-        """
-        _log.info(
-            "\n\n" + stringy.pad_with_stars(
-                f'Start Mapproxy config DB cleaning for layer: [{product_id}-{product_version}]', length=140))
-
-        mapproxy_layers = self.get_mapproxy_config(product_id=product_id,
-                                                   product_version=product_version,
-                                                   )
-        layer_to_delete = [layer for layer in mapproxy_layers.items() if len(layer[1]) > 0]
-        if not len(layer_to_delete):
-            _log.info(f'Not found configs for layer: [{product_id}]')
-            report = {'state': False, 'msg': f'Not found configs for layer: [{product_id}]'}
-
-        else:
-            _log.info(f'Found {len(layer_to_delete)} mapproxy configs to delete:\n'
-                      f'To see configs run with log level - DEBUG')
-            _log.debug(f'{json.dumps(layer_to_delete, indent=4, sort_keys=True, default=str, ensure_ascii=False)}')
-            layer_names = [layer_names[0] for layer_names in layer_to_delete]
-            resp = self._delete_mapproxy_config(layer_names=layer_names, mapproxy_route=mapproxy_route)
-            _log.info(f'Configs deletion were executed with state: {json.dumps(resp, indent=4)}')
-            report = {'state': True, 'msg': resp}
-
-        _log.info('\n' + stringy.pad_with_minus('End of Mapproxy configs DB deletion', length=140) + '\n')
-
-        return report
+    # def remove_config_mapproxy(self, product_id, product_version, mapproxy_route):
+    #     """
+    #     This method will execute clean on raster mapproxy config DB and remove related configs with related layer
+    #     :param product_id: string [layer's id]
+    #     :param product_version: string [layer's version]
+    #     :return: dict => {state: bool, msg: dict}
+    #     """
+    #     _log.info(
+    #         "\n\n" + stringy.pad_with_stars(
+    #             f'Start Mapproxy config DB cleaning for layer: [{product_id}-{product_version}]', length=140))
+    #
+    #     mapproxy_layers = self.get_mapproxy_config(product_id=product_id,
+    #                                                product_version=product_version,
+    #                                                )
+    #     layer_to_delete = [layer for layer in mapproxy_layers.items() if len(layer[1]) > 0]
+    #     if not len(layer_to_delete):
+    #         _log.info(f'Not found configs for layer: [{product_id}]')
+    #         report = {'state': False, 'msg': f'Not found configs for layer: [{product_id}]'}
+    #
+    #     else:
+    #         _log.info(f'Found {len(layer_to_delete)} mapproxy configs to delete:\n'
+    #                   f'To see configs run with log level - DEBUG')
+    #         _log.debug(f'{json.dumps(layer_to_delete, indent=4, sort_keys=True, default=str, ensure_ascii=False)}')
+    #         layer_names = [layer_names[0] for layer_names in layer_to_delete]
+    #         resp = self._delete_mapproxy_config(layer_names=layer_names, mapproxy_route=mapproxy_route)
+    #         _log.info(f'Configs deletion were executed with state: {json.dumps(resp, indent=4)}')
+    #         report = {'state': True, 'msg': resp}
+    #
+    #     _log.info('\n' + stringy.pad_with_minus('End of Mapproxy configs DB deletion', length=140) + '\n')
+    #
+    #     return report
 
     # ============================================ Agent config ========================================================
 
@@ -552,12 +552,11 @@ class PostgresHandler:
                                                                 condition_param="or",
                                                                 pk="product_id",
                                                                 identifiers=["automation"],
-                                                                columns="product_id, product_version")
+                                                                columns="product_id, product_version, identifier, display_path")
         cleanup_format = []
         for layer in data_to_delete:
-            layer_values = {}
-            layer_values["product_id"] = layer[0]
-            layer_values["product_version"] = layer[1]
+            layer_values = {"product_id": layer[0], "product_version": layer[1], "identifier": layer[2],
+                            "display_path": layer[3]}
             cleanup_format.append(layer_values)
         with open("data_to_delete.json", "w") as f:
             json_object = json.dumps(cleanup_format)

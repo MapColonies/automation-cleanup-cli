@@ -5,9 +5,9 @@ import os
 import json
 from time import sleep
 
-from mc_automation_tools.base_requests import send_delete_request, send_get_request
+import requests
+from mc_automation_tools.base_requests import send_delete_request
 
-from cleanup_cli.utils import get_tasks_and_job_by_product_id
 from cleanup_cli.wrappers import env
 from cleanup_cli.wrappers.connection import *
 
@@ -55,8 +55,7 @@ def load_json(directory):
 #     return result
 
 
-def run_cleanup(data_file, mapproxy_route, job_manager_route, raster_catalog_route, pg_handler=None,
-                storage_handler=None, deletion_list=None):
+def run_cleanup(data_file, mapproxy_route, pg_handler=None, storage_handler=None, deletion_list=None):
     """
     This method will execute full cleanup according configuration
     :param data_file: layer to delete
@@ -71,27 +70,19 @@ def run_cleanup(data_file, mapproxy_route, job_manager_route, raster_catalog_rou
             layer_id = layer['product_id']
             layer_version = layer['product_version']
             layer_type = layer.get('product_type')
-            identifier = layer["identifier"]
-            display_path = layer["display_path"]
+            identifier = layer.get("identifier")
 
             if not deletion_list:
-                # tiles_storage_params = pg_handler.get_tiles_path_convention(product_id=layer_id)
-                # tiles_storage_params = tiles_storage_params[0]
-                # identifier = tiles_storage_params['identifier']
-                # display_path = tiles_storage_params['display_path']
+                tiles_storage_params = pg_handler.get_tiles_path_convention(product_id=layer_id)
+                tiles_storage_params = tiles_storage_params[0]
+                identifier = tiles_storage_params['identifier']
+                display_path = tiles_storage_params['display_path']
                 tiles_path_convention = f"{identifier}/{display_path}"
-                storage = storage_handler.remove_tiles(layer_name=tiles_path_convention)
-                # job_and_tasks = get_tasks_and_job_by_product_id(job_manager_url=job_manager_route, product_id=layer_id)
-                # task_list = job_and_tasks.get("tasks")
-                # job_id = job_and_tasks.get("jobId")
-                # for task in task_list:
-                #     params = {"jobId": job_id, "taskId": task}
-                #     res=
-
-
 
                 job_task_pg = pg_handler.delete_job_task_by_layer(product_id=layer_id, product_version=layer_version,
                                                                   product_type=layer_type)
+
+                # tasks_delete_api = requests.delete(url=)
                 # layer_spec_pg = pg_handler.delete_tile_counter_by_layer(product_id=layer_id, product_version=layer_version)
                 pycsw_catalog_pg = pg_handler.delete_record_by_layer(product_id=layer_id, product_version=layer_version,
                                                                      product_type=layer_type)
@@ -99,6 +90,7 @@ def run_cleanup(data_file, mapproxy_route, job_manager_route, raster_catalog_rou
                 #                                                 mapproxy_route=mapproxy_route)
                 # agent_pg = pg_handler.remove_agent_db_record(product_id=layer_id, product_version=layer_version)
                 mapproxy_pg = pg_handler._delete_mapproxy_config(layer_name=layer_id, mapproxy_route=mapproxy_route)
+                storage = storage_handler.remove_tiles(layer_name=tiles_path_convention)
 
                 results[layer_id] = {'jobs': job_task_pg,
                                      # 'layer_spec': layer_spec_pg,
