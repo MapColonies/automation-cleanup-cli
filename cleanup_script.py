@@ -45,6 +45,7 @@ if conf_dir:
         mapproxy_config_route = conf["mapproxy_config_route"]
         job_manager_route = conf["job_manager_route"]
         raster_catalog_route = conf["raster_catalog_route"]
+        token = conf["X-API-KEY"]
         logger.info("Collecting tests data to delete")
         data_to_clean = pg_handler.get_daily_cleanup_data()
         if not data_to_clean:
@@ -56,7 +57,7 @@ if conf_dir:
                 resp = executers.run_cleanup(data_file=data_to_clean, pg_handler=pg_handler,
                                              storage_handler=storage_handler, mapproxy_route=mapproxy_config_route,
                                              job_manager_route=job_manager_route,
-                                             raster_catalog_route=raster_catalog_route)
+                                             raster_catalog_route=raster_catalog_route, token=token)
                 logger.info('Cleanup script execution completed')
             except Exception as e:
                 resp = str(e)
