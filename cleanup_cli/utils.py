@@ -1,3 +1,5 @@
+import time
+
 from mc_automation_tools.base_requests import send_get_request, send_delete_request
 
 
@@ -38,7 +40,9 @@ def get_tasks_and_job_by_product_id(job_manager_url: str, product_id: str, token
     """
     try:
         job_manager_params = {"resourceId": product_id, "shouldReturnTasks": "true",
-                              "shouldReturnAvailableActions": "false", "token": token}
+                              "shouldReturnAvailableActions": "false"}
+        # job_manager_url = job_manager_url
+
         resp = send_get_request(url=job_manager_url, params=job_manager_params)
         response_content = resp.json()[0]
         job_id = response_content["id"]
@@ -56,17 +60,22 @@ def delete_job_tasks(job_and_tasks: dict, job_manager_url: str, token: str):
     param: job_manager_url: job manager request url
     """
     is_deleted = True
+    task_state = []
     if job_and_tasks:
         job_id = job_and_tasks.get("job_id")
-        tasks = job_and_tasks.get("tasks")
-        task_list = create_tasks_deletion_list(tasks_dict=tasks)
-        for task in task_list:
-            params = {"jobId": job_id, "taskId": task, "token": token}
+        task_list = job_and_tasks.get("tasks")
+        for task_id in task_list:
+            # params = {"jobId": job_id}
             try:
-                resp = send_delete_request(url=job_manager_url, params=params)
-                return is_deleted if resp.status_code == 200 else False
+                job_manager_url = job_manager_url + f"{job_id}" + "/tasks" + f"/{task_id}"
+                resp = send_delete_request(url=job_manager_url)
+                is_deleted = is_deleted if resp.status_code == 200 else False
+                task_state.append({"task_id": task_id, "is_deleted": is_deleted})
+                time.sleep(10)
             except Exception as e:
                 return e
+        task_state = [d for d in task_state if d.get("is_deleted") is True]
+        return False if len(task_state) != len(task_list) else True
 
 
 def delete_job_by_id(job_id: str, job_manager_url: str, token: str):
@@ -77,8 +86,9 @@ def delete_job_by_id(job_id: str, job_manager_url: str, token: str):
     """
     is_deleted = True
     try:
-        params = {"jobId": job_id, "token": token}
-        resp = send_delete_request(url=job_manager_url, params=params)
+        # params = {"jobId": job_id, "token": token}
+        job_manager_url = job_manager_url + f"{job_id}"
+        resp = send_delete_request(url=job_manager_url)
         return is_deleted if resp.status_code == 200 else False
 
     except Exception as e:
@@ -102,9 +112,10 @@ def delete_record_by_id(record_id: str, catalog_manager_url: str, token: str):
 
     """
     is_deleted = True
-    params = {"recordId": record_id, "token": token}
+    params = {"token": token}
     try:
-        resp = send_delete_request(url=catalog_manager_url, params=params)
+        deletion_url = catalog_manager_url + record_id
+        resp = send_delete_request(url=deletion_url, params=params)
         return is_deleted if resp.status_code == 200 else False
     except Exception as e:
         return e
