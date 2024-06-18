@@ -84,7 +84,7 @@ def run_cleanup(data_file, mapproxy_route, job_manager_route, raster_catalog_rou
                 # display_path = tiles_storage_params['display_path']
                 tiles_path_convention = f"{identifier}/{display_path}"
                 storage = storage_handler.remove_tiles(layer_name=tiles_path_convention)
-                catalog_record = delete_record_by_id(record_id=identifier, catalog_manager_url=raster_catalog_route, token=token)
+                catalog_record = delete_record_by_id(record_id=identifier, catalog_manager_url=raster_catalog_route)
                 job_task_records = delete_job_task_by_ids(job_manager_url=job_manager_route, product_id=layer_id, token=token)
 
                 # job_and_tasks = get_tasks_and_job_by_product_id(job_manager_url=job_manager_route, product_id=layer_id)
@@ -110,6 +110,7 @@ def run_cleanup(data_file, mapproxy_route, job_manager_route, raster_catalog_rou
                                      # 'mapproxy': mapproxy_pg,
                                      # 'agent': agent_pg,
                                      'storage': storage}
+
         mapproxy_config = delete_layer_from_mapproxy(layers_ids=mapproxy_deletion_list, mapproxy_url=mapproxy_route)
 
         results["mapproxy_deletion"] = mapproxy_config
