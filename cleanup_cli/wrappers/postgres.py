@@ -552,10 +552,10 @@ class PostgresHandler:
                                                                 condition_param="or",
                                                                 pk="product_id",
                                                                 identifiers=["automation"],
-                                                                columns="product_id, product_version, identifier, display_path")
+                                                                columns="product_id, product_type, identifier, display_path")
         cleanup_format = []
         for layer in data_to_delete:
-            layer_values = {"product_id": layer[0], "product_version": layer[1], "identifier": layer[2],
+            layer_values = {"product_id": layer[0], "product_type": layer[1], "identifier": layer[2],
                             "display_path": layer[3]}
             cleanup_format.append(layer_values)
         with open("data_to_delete.json", "w") as f:

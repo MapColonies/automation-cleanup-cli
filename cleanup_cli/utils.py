@@ -1,5 +1,3 @@
-import time
-
 from mc_automation_tools.base_requests import send_get_request, send_delete_request
 
 
@@ -34,14 +32,13 @@ def create_tasks_deletion_list(tasks_dict: dict):
         return task_to_delete
 
 
-def get_tasks_and_job_by_product_id(job_manager_url: str, product_id: str, token: str):
+def get_tasks_and_job_by_product_id(job_manager_url: str, product_id: str):
     """
     This function will return the job id and its tasks by giving product_id
     """
     try:
         job_manager_params = {"resourceId": product_id, "shouldReturnTasks": "true",
                               "shouldReturnAvailableActions": "false"}
-        # job_manager_url = job_manager_url
 
         resp = send_get_request(url=job_manager_url, params=job_manager_params)
         if resp.text != '[]':
@@ -70,7 +67,6 @@ def delete_job_tasks(job_and_tasks: dict, job_manager_url: str):
         job_id = job_and_tasks.get("job_id")
         task_list = job_and_tasks.get("tasks")
         for task_id in task_list:
-            # params = {"jobId": job_id}
             try:
                 task_deletion_url = job_manager_url + f"{job_id}" + "/tasks" + f"/{task_id}"
                 resp = send_delete_request(url=task_deletion_url)
@@ -91,7 +87,6 @@ def delete_job_by_id(job_id: str, job_manager_url: str, token: str):
     """
     is_deleted = True
     try:
-        # params = {"jobId": job_id, "token": token}
         job_manager_url = job_manager_url + f"{job_id}"
         resp = send_delete_request(url=job_manager_url)
         return is_deleted if resp.status_code == 200 else False
@@ -101,9 +96,8 @@ def delete_job_by_id(job_id: str, job_manager_url: str, token: str):
 
 
 def delete_job_task_by_ids(job_manager_url: str, product_id: str, token: str):
-    job_tasks = get_tasks_and_job_by_product_id(job_manager_url=job_manager_url, product_id=product_id, token=token)
+    job_tasks = get_tasks_and_job_by_product_id(job_manager_url=job_manager_url, product_id=product_id)
     job_id = job_tasks.get("job_id")
-    # tasks = job_tasks.get("tasks")
     if job_tasks:
         tasks_delete_state = delete_job_tasks(job_and_tasks=job_tasks, job_manager_url=job_manager_url)
         job_delete_state = delete_job_by_id(job_id=job_id, job_manager_url=job_manager_url, token=token)
@@ -121,7 +115,6 @@ def delete_record_by_id(record_id: str, catalog_manager_url: str):
 
     """
     is_deleted = True
-    # params = {"token": token}
     try:
         deletion_url = catalog_manager_url + record_id
         resp = send_delete_request(url=deletion_url)

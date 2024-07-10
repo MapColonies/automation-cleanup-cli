@@ -3,7 +3,6 @@ import os
 import datetime
 
 from cleanup_cli.app import executers
-from cleanup_cli.configuration.config import load_config
 from cleanup_cli.wrappers import env, connection
 
 """
@@ -62,7 +61,6 @@ if conf_dir:
             except Exception as e:
                 resp = str(e)
                 logger.error(resp)
-            # print(json.dumps(resp))
     else:
         logger.error('Configuration file content is invalid')
 else:

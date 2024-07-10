@@ -71,11 +71,10 @@ def run_cleanup(data_file, mapproxy_route, job_manager_route, raster_catalog_rou
     if data_file:
         for layer in data_file:
             layer_id = layer['product_id']
-            layer_version = layer['product_version']
             layer_type = layer.get('product_type')
             identifier = layer["identifier"]
             display_path = layer["display_path"]
-            mapproxy_deletion_list.append(layer_id)
+            mapproxy_deletion_list.append(f"{layer_id}-{layer_type}")
 
             if not deletion_list:
                 # tiles_storage_params = pg_handler.get_tiles_path_convention(product_id=layer_id)
