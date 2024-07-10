@@ -10,11 +10,10 @@ pg_config = config.PG_CONFIG_CORE_B
 pg_handler = postgres.PostgresHandler(pg_config)
 #
 pg_handler.delete_job_task_by_layer(product_id, product_version)
-pg_handler.delete_tile_counter_by_layer(product_id, product_version)
+# pg_handler.delete_tile_counter_by_layer(product_id, product_version)
 pg_handler.delete_record_by_layer(product_id, product_version)
 pg_handler.remove_config_mapproxy(product_id, product_version)
 res = pg_handler.remove_agent_db_record(product_id, product_version)
-
 
 s3_config = config._s3_credentials_b
 s3_handler = s3.S3Handler(s3_config)
@@ -23,5 +22,3 @@ s3_handler = s3.S3Handler(s3_config)
 # # s3_handler.list_object(product_id)
 # # s3_handler.remove_layer_from_bucket(product_id)
 s3_handler.clean_layer_from_s3(product_id)
-
-
