@@ -32,29 +32,6 @@ def create_tasks_deletion_list(tasks_dict: dict):
         return task_to_delete
 
 
-def get_tasks_and_job_by_product_id(job_manager_url: str, product_id: str):
-    """
-    This function will return the job id and its tasks by giving product_id
-    """
-    try:
-        job_manager_params = {"resourceId": product_id, "shouldReturnTasks": "true",
-                              "shouldReturnAvailableActions": "false"}
-
-        resp = send_get_request(url=job_manager_url, params=job_manager_params)
-        if resp.text != '[]':
-            response_content = resp.json()[0]
-
-            job_id = response_content["id"]
-            job_tasks = response_content["tasks"]
-            tasks_list = create_tasks_deletion_list(tasks_dict=job_tasks)
-            return {"job_id": job_id, "tasks": tasks_list}
-        else:
-            return {}
-
-    except Exception as e:
-        return e
-
-
 def delete_job_tasks(job_and_tasks: dict, job_manager_url: str):
     """
     This method will create delete request of job's tasks to the job manager url
@@ -95,16 +72,55 @@ def delete_job_by_id(job_id: str, job_manager_url: str, token: str):
         return e
 
 
-def delete_job_task_by_ids(job_manager_url: str, product_id: str, token: str):
-    job_tasks = get_tasks_and_job_by_product_id(job_manager_url=job_manager_url, product_id=product_id)
-    job_id = job_tasks.get("job_id")
-    if job_tasks:
-        tasks_delete_state = delete_job_tasks(job_and_tasks=job_tasks, job_manager_url=job_manager_url)
-        job_delete_state = delete_job_by_id(job_id=job_id, job_manager_url=job_manager_url, token=token)
-        return {"job_deleted": job_delete_state, "task_deleted": tasks_delete_state}
+def config_job_variables(job):
+    """
+    This method config the job variables
+    :param job: job to delete
+    """
+    job_id = job["id"]
+    job_tasks = job["tasks"]
+    tasks_list = create_tasks_deletion_list(tasks_dict=job_tasks)
+    return {"job_id": job_id, "tasks": tasks_list}
+
+
+def delete_jobs_tasks_by_ids(job_manager_url: str, product_id: str, token: str):
+    jobs = get_tasks_and_job_by_product_id(job_manager_url=job_manager_url, product_id=product_id)
+    jobs_status_dict = {}
+    if jobs:
+        for job in jobs:
+            job_id = job["id"]
+            job_tasks = job["tasks"]
+            tasks_list = create_tasks_deletion_list(tasks_dict=job_tasks)
+            job_tasks = config_job_variables(job)
+            if job_tasks:
+                tasks_delete_state = delete_job_tasks(job_and_tasks=job_tasks, job_manager_url=job_manager_url)
+                job_delete_state = delete_job_by_id(job_id=job_tasks.get("job_id"), job_manager_url=job_manager_url, token=token)
+                jobs_status_dict.update({job["id"] : {"job_deleted" : job_delete_state, "task_deleted" : tasks_delete_state}})
+            else:
+                job_delete_state = delete_job_by_id(job_id=job_tasks.get("job_id"), job_manager_url=job_manager_url, token=token)
+                jobs_status_dict.update({job: {"job_deleted" : job_delete_state, "task_deleted" : "No Tasks was found to delete for the job"}})
+        return jobs_status_dict
     else:
-        return {"job_deleted": f"No job was found to delete for {product_id}",
-                "task_deleted": f"No Tasks was found to delete for {product_id}"}
+        return {"job_deleted" : "No jobs was found to delete"}
+
+
+def get_tasks_and_job_by_product_id(job_manager_url: str, product_id: str):
+    """
+    This function will return list of jobs to delete
+    """
+    try:
+        job_manager_params = {"resourceId": product_id, "shouldReturnTasks": "true",
+                              "shouldReturnAvailableActions": "false"}
+
+        resp = send_get_request(url=job_manager_url, params=job_manager_params)
+        if resp.text != '[]':
+            response_content = resp.json()
+            return response_content
+        else:
+            return {}
+
+    except Exception as e:
+        return e
 
 
 def delete_record_by_id(record_id: str, catalog_manager_url: str):
