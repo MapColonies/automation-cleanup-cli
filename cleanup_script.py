@@ -29,14 +29,14 @@ def init_logger():
 
     return logger
 
-def logDataToClean(logger,data_to_clean):
+def log_data_to_clean(logger,data_to_clean):
     logger.info(f"Found {len(data_to_clean)} layers to clean")
     logger.info("\n" + stringy.pad_with_stars(
         "The ID's of the layers found to be clean", length=138))
-    layersIDs = []
+    layers_ids = []
     for layer in data_to_clean:
-        layersIDs.append(layer["identifier"])
-    logger.info(layersIDs)
+        layers_ids.append(layer["identifier"])
+    logger.info(layers_ids)
 
 
 if __name__ == '__main__':
@@ -68,7 +68,7 @@ if __name__ == '__main__':
             if not data_to_clean:
                 logger.info("No data was found to clean")
             else:
-                logDataToClean(logger,data_to_clean)
+                log_data_to_clean(logger,data_to_clean)
                 try:
                     logger.info("\n" + stringy.pad_with_stars(
                         "Start running cleanup" , length=140))

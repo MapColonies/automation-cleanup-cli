@@ -43,10 +43,10 @@ def run_cleanup(deletion_list: List[dict], storage_handler, mapproxy_route, job_
     mapproxy_deletion_list = []
     if deletion_list:
         for layer in deletion_list:
-            layer_id = layer['product_id']
+            layer_id = layer.get('product_id')
             layer_type = layer.get('product_type')
-            identifier = layer["identifier"]
-            display_path = layer["display_path"]
+            identifier = layer.get("identifier")
+            display_path = layer.get("display_path")
             mapproxy_deletion_list.append(f"{layer_id}-{layer_type}")
             tiles_path_convention = f"{identifier}/{display_path}"
 
@@ -58,7 +58,7 @@ def run_cleanup(deletion_list: List[dict], storage_handler, mapproxy_route, job_
             results[layer_id] = {'jobs': job_task_records,
                                  'catalog_pycsw': catalog_record,
                                  'storage': storage}
-            logger.info(f"The layer: {identifier} had been cleaned with the results: {results[layer_id]} \n")
+            logger.info(f"The layer: {identifier} has been cleaned with the results: {results[layer_id]} \n")
 
         mapproxy_config = delete_layer_from_mapproxy(layers_ids=mapproxy_deletion_list, mapproxy_url=mapproxy_route)
 

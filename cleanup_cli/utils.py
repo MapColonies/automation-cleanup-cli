@@ -77,25 +77,31 @@ def config_job_variables(job):
     This method config the job variables
     :param job: job to delete
     """
-    job_id = job["id"]
-    job_tasks = job["tasks"]
+    job_id = job.get("id")
+    job_tasks = job.get("tasks")
     tasks_list = create_tasks_deletion_list(tasks_dict=job_tasks)
     return {"job_id": job_id, "tasks": tasks_list}
 
 
 def delete_jobs_tasks_by_ids(job_manager_url: str, product_id: str, token: str):
+    """
+    This method will create delete job request from job manager
+    param: job_manager_url: job manager requests url
+    param: product_id: the layer's product id
+    param: token : the token for the connection
+    """
     jobs = get_tasks_and_job_by_product_id(job_manager_url=job_manager_url, product_id=product_id)
     jobs_status_dict = {}
     if jobs:
         for job in jobs:
-            job_id = job["id"]
-            job_tasks = job["tasks"]
+            job_id = job.get("id")
+            job_tasks = job.get("tasks")
             tasks_list = create_tasks_deletion_list(tasks_dict=job_tasks)
             job_tasks = config_job_variables(job)
             if job_tasks:
                 tasks_delete_state = delete_job_tasks(job_and_tasks=job_tasks, job_manager_url=job_manager_url)
                 job_delete_state = delete_job_by_id(job_id=job_tasks.get("job_id"), job_manager_url=job_manager_url, token=token)
-                jobs_status_dict.update({job["id"] : {"job_deleted" : job_delete_state, "task_deleted" : tasks_delete_state}})
+                jobs_status_dict.update({job.get("id") : {"job_deleted" : job_delete_state, "task_deleted" : tasks_delete_state}})
             else:
                 job_delete_state = delete_job_by_id(job_id=job_tasks.get("job_id"), job_manager_url=job_manager_url, token=token)
                 jobs_status_dict.update({job: {"job_deleted" : job_delete_state, "task_deleted" : "No Tasks was found to delete for the job"}})
