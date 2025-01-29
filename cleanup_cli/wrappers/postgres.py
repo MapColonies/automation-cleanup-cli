@@ -558,10 +558,4 @@ class PostgresHandler:
             layer_values = {"product_id": layer[0], "product_type": layer[1], "identifier": layer[2],
                             "display_path": layer[3]}
             cleanup_format.append(layer_values)
-        with open("data_to_delete.json", "w") as f:
-            json_object = json.dumps(cleanup_format)
-            f.write(json_object)
-            json.dumps(cleanup_format)
-
-        # print(cleanup_format)
         return cleanup_format
