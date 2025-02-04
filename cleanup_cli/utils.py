@@ -1,4 +1,5 @@
 from mc_automation_tools.base_requests import send_get_request, send_delete_request
+from mc_automation_tools.postgres import PGClass
 
 
 def delete_layer_from_mapproxy(layers_ids: list, mapproxy_url: str):
@@ -100,14 +101,18 @@ def delete_jobs_tasks_by_ids(job_manager_url: str, product_id: str, token: str):
             job_tasks = config_job_variables(job)
             if job_tasks:
                 tasks_delete_state = delete_job_tasks(job_and_tasks=job_tasks, job_manager_url=job_manager_url)
-                job_delete_state = delete_job_by_id(job_id=job_tasks.get("job_id"), job_manager_url=job_manager_url, token=token)
-                jobs_status_dict.update({job.get("id") : {"job_deleted" : job_delete_state, "task_deleted" : tasks_delete_state}})
+                job_delete_state = delete_job_by_id(job_id=job_tasks.get("job_id"), job_manager_url=job_manager_url,
+                                                    token=token)
+                jobs_status_dict.update(
+                    {job.get("id"): {"job_deleted": job_delete_state, "task_deleted": tasks_delete_state}})
             else:
-                job_delete_state = delete_job_by_id(job_id=job_tasks.get("job_id"), job_manager_url=job_manager_url, token=token)
-                jobs_status_dict.update({job: {"job_deleted" : job_delete_state, "task_deleted" : "No Tasks was found to delete for the job"}})
+                job_delete_state = delete_job_by_id(job_id=job_tasks.get("job_id"), job_manager_url=job_manager_url,
+                                                    token=token)
+                jobs_status_dict.update({job: {"job_deleted": job_delete_state,
+                                               "task_deleted": "No Tasks was found to delete for the job"}})
         return jobs_status_dict
     else:
-        return {"job_deleted" : "No jobs was found to delete"}
+        return {"job_deleted": "No jobs was found to delete"}
 
 
 def get_tasks_and_job_by_product_id(job_manager_url: str, product_id: str):
@@ -143,3 +148,22 @@ def delete_record_by_id(record_id: str, catalog_manager_url: str):
         return is_deleted if resp.status_code == 200 else False
     except Exception as e:
         return e
+
+#
+# def delete_pp_tables(table_names: list, db_credentials: dict):
+#     """
+#     This method will remove layer's polygon parts tables
+#     from catalog_parts schema
+#
+#     """
+#     try:
+#         db_conn = PGClass(host=db_credentials.get("pg_endpoint_url"), database=db_credentials.get("pg_db").get("name"),
+#                           user=db_credentials.get("pg_user"), password=db_credentials.get("pg_pass"),
+#                           port=db_credentials.get("pg_port"),
+#                           scheme=db_credentials.get("pg_db").get("schemes").get("polygon_parts"))
+#
+#         command = f"""DROP TABLE "{db_conn.scheme}"."{table_names[0].lower()}","{db_conn.scheme}"."{table_names[1].lower()}" CASCADE;"""
+#         db_conn.command_execute(command=command)
+#         return {"is_deleted": True, "reason": ""}
+#     except Exception as e:
+#         return {"is_deleted": False, "reason": e}

@@ -73,6 +73,7 @@ if __name__ == '__main__':
                     logger.info("\n" + stringy.pad_with_stars(
                         "Start running cleanup" , length=140))
                     resp = executers.run_cleanup(deletion_list=data_to_clean,
+                                                 pg_handler= pg_handler,
                                                  storage_handler=storage_handler, mapproxy_route=mapproxy_config_route,
                                                  job_manager_route=job_manager_route,
                                                  raster_catalog_route=raster_catalog_route, token=token, logger=logger)

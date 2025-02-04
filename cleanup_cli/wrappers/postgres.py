@@ -94,6 +94,7 @@ class PostgresHandler:
         self.__catalog_manager_scheme = pg_credential.get('pg_db')['schemes']['raster_catalog_manager']['name']
         self.__catalog_records_table = pg_credential.get('pg_db')['schemes']['raster_catalog_manager']['tables'][
             'records']
+        self.__polygon_parts_schema = pg_credential.get('pg_db')['schemes']['polygon_parts']['name']
 
     @property
     def get_class_params(self):
@@ -108,6 +109,10 @@ class PostgresHandler:
                 'name': self.__mapproxy_scheme,
                 'mapproxy_config_table': self.__mapproxy_config_table,
                 'mapproxy_config_index': self.__mapproxy_config_index
+            },
+            'polygon_parts': {
+                'name': self.__polygon_parts_schema
+
             }
         }
 
@@ -559,3 +564,13 @@ class PostgresHandler:
                             "display_path": layer[3]}
             cleanup_format.append(layer_values)
         return cleanup_format
+
+    def remove_polygon_parts_table(self, table_names):
+        pg_conn = self._get_connection_to_scheme(self.__polygon_parts_schema)
+        try:
+
+            command = f"""DROP TABLE "{pg_conn.scheme}"."{table_names[0].lower()}","{pg_conn.scheme}"."{table_names[1].lower()}" CASCADE;"""
+            pg_conn.command_execute(commands=[command])
+            return {"is_deleted": True, "reason": ""}
+        except Exception as e:
+            return {"is_deleted": False, "reason": e}

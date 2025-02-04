@@ -32,7 +32,10 @@ def load_json(directory):
 
     return results
 
-def run_cleanup(deletion_list: List[dict], storage_handler, mapproxy_route, job_manager_route, raster_catalog_route, token, logger):
+
+def run_cleanup(deletion_list: List[dict], pg_handler, storage_handler, mapproxy_route, job_manager_route,
+                raster_catalog_route,
+                token, logger):
     """
     This method will execute full cleanup according configuration
     :param deletion_list: dict -> description of what records to clean
@@ -49,15 +52,18 @@ def run_cleanup(deletion_list: List[dict], storage_handler, mapproxy_route, job_
             display_path = layer.get("display_path")
             mapproxy_deletion_list.append(f"{layer_id}-{layer_type}")
             tiles_path_convention = f"{identifier}/{display_path}"
+            pp_tables = [f"{layer_id}_{layer_type}", f"{layer_id}_{layer_type}_parts"]
 
             storage = storage_handler.remove_tiles(layer_name=tiles_path_convention)
             catalog_record = delete_record_by_id(record_id=identifier, catalog_manager_url=raster_catalog_route)
             job_task_records = delete_jobs_tasks_by_ids(job_manager_url=job_manager_route, product_id=layer_id,
                                                         token=token)
+            pp_tables_status = pg_handler.remove_polygon_parts_table(table_names=pp_tables)
 
             results[layer_id] = {'jobs': job_task_records,
                                  'catalog_pycsw': catalog_record,
-                                 'storage': storage}
+                                 'storage': storage,
+                                 'polygon_parts_tables': pp_tables_status}
             logger.info(f"The layer: {identifier} has been cleaned with the results: {results[layer_id]} \n")
 
         mapproxy_config = delete_layer_from_mapproxy(layers_ids=mapproxy_deletion_list, mapproxy_url=mapproxy_route)
