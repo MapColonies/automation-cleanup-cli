@@ -43,14 +43,14 @@ def run_cleanup(deletion_list: List[dict], pg_handler, storage_handler, mapproxy
     :return: dict -> results
     """
     results = {}
-    mapproxy_deletion_list = []
     if deletion_list:
         for layer in deletion_list:
+            mapproxy_deletion_list = []
             layer_id = layer.get('product_id')
             layer_type = layer.get('product_type')
             identifier = layer.get("identifier")
             display_path = layer.get("display_path")
-            mapproxy_deletion_list.append(f"{layer_id}-{layer_type}")
+            mapproxy_deletion_list.append(f"{layer_id}_{layer_type}")
             tiles_path_convention = f"{identifier}/{display_path}"
             pp_tables = [f"{layer_id}_{layer_type}", f"{layer_id}_{layer_type}_parts"]
 
@@ -59,16 +59,15 @@ def run_cleanup(deletion_list: List[dict], pg_handler, storage_handler, mapproxy
             job_task_records = delete_jobs_tasks_by_ids(job_manager_url=job_manager_route, product_id=layer_id,
                                                         token=token)
             pp_tables_status = pg_handler.remove_polygon_parts_table(table_names=pp_tables)
+            mapproxy_config = delete_layer_from_mapproxy(layers_ids=mapproxy_deletion_list, mapproxy_url=mapproxy_route)
 
             results[layer_id] = {'jobs': job_task_records,
                                  'catalog_pycsw': catalog_record,
                                  'storage': storage,
-                                 'polygon_parts_tables': pp_tables_status}
+                                 'polygon_parts_tables': pp_tables_status, "mapproxy_deletion": mapproxy_config}
+
             logger.info(f"The layer: {identifier} has been cleaned with the results: {results[layer_id]} \n")
 
-        mapproxy_config = delete_layer_from_mapproxy(layers_ids=mapproxy_deletion_list, mapproxy_url=mapproxy_route)
-
-        results["mapproxy_deletion"] = mapproxy_config
         logger.info(f"results of mapproxy deletion : {results['mapproxy_deletion']} \n")
 
         sleep(5)

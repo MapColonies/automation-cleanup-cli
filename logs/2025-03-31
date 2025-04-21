@@ -1,0 +1,31 @@
+2025-03-31 15:43:53,181 - INFO - Pg connection created
+2025-03-31 15:43:53,182 - INFO - Tiles provider - s3 
+2025-03-31 15:43:53,182 - INFO - Collecting tests data to delete
+2025-03-31 15:43:56,211 - INFO - Found 9 layers to clean
+2025-03-31 15:43:56,211 - INFO - 
+************************************************ The ID's of the layers found to be clean ************************************************
+2025-03-31 15:43:56,211 - INFO - ['10501107-3df5-4516-9c2d-8b08a2c8df26', '33888b96-f862-4655-ad2b-61dff5a15bd9', 'adf977e0-e3cd-48a5-89f4-29b055ddf39d', '17e8b4e4-76e1-4445-8fb0-0ee02038d2b4', 'a7fc8bc9-aab0-4915-a241-71eb4fbba764', 'cf159fdc-c8ee-4cd7-9744-168aa8fcf831', '79a19cc0-1631-4c91-98ec-3a89bb3afe42', 'e5324eca-bc4c-4859-a02d-60a7604a1668', '163221c0-8cbe-48c5-8c5f-f403730a9ff0']
+2025-03-31 15:43:56,211 - INFO - 
+********************************************************** Start running cleanup ***********************************************************
+2025-03-31 15:45:30,581 - INFO - The layer: 10501107-3df5-4516-9c2d-8b08a2c8df26 has been cleaned with the results: {'jobs': {'6064f74f-0666-4a6b-b347-d5307683b456': {'job_deleted': True, 'task_deleted': True}, '915d525c-7935-449b-8592-9d13fa7c23e5': {'job_deleted': True, 'task_deleted': True}, 'ed33915e-fa8b-4115-bcc1-cc6c3c1a35e8': {'job_deleted': True, 'task_deleted': True}}, 'catalog_pycsw': True, 'storage': {'state': True, 'msg': 'Layer - 10501107-3df5-4516-9c2d-8b08a2c8df26/9b35b148-86c7-4fb4-b197-1e8c31ca3261, deleted 175 items'}, 'polygon_parts_tables': {'is_deleted': True, 'reason': ''}} 
+
+2025-03-31 15:46:26,492 - INFO - The layer: 33888b96-f862-4655-ad2b-61dff5a15bd9 has been cleaned with the results: {'jobs': {'0d9f7321-f8d2-4573-8a2c-7043215b4f79': {'job_deleted': True, 'task_deleted': True}}, 'catalog_pycsw': True, 'storage': {'state': True, 'msg': 'Layer - 33888b96-f862-4655-ad2b-61dff5a15bd9/b6b06eff-fc12-4b3a-b3c2-4ef865bccba6, deleted 175 items'}, 'polygon_parts_tables': {'is_deleted': True, 'reason': ''}} 
+
+2025-03-31 15:47:32,233 - INFO - The layer: adf977e0-e3cd-48a5-89f4-29b055ddf39d has been cleaned with the results: {'jobs': {'49a5ba48-2a49-4f5a-a3de-d593b71d5822': {'job_deleted': True, 'task_deleted': True}, '07a2c93d-3c73-4540-aaf7-476373170d6f': {'job_deleted': True, 'task_deleted': True}, '0ade5619-dcdf-4c20-8418-8eb3b3fa9a21': {'job_deleted': True, 'task_deleted': True}}, 'catalog_pycsw': True, 'storage': {'state': True, 'msg': 'Layer - adf977e0-e3cd-48a5-89f4-29b055ddf39d/5c9e6216-9145-4a70-bc91-a4f864be0a07, deleted 175 items'}, 'polygon_parts_tables': {'is_deleted': True, 'reason': ''}} 
+
+2025-03-31 15:48:38,281 - INFO - The layer: 17e8b4e4-76e1-4445-8fb0-0ee02038d2b4 has been cleaned with the results: {'jobs': {'c13f3890-5bb2-46ab-ba4b-6d91c6129214': {'job_deleted': True, 'task_deleted': True}, '6cf23736-6a71-4eb5-91a3-0c1d9e0fe8f5': {'job_deleted': True, 'task_deleted': True}, 'fc36a05d-8407-4745-8748-bb5a777b0a7e': {'job_deleted': True, 'task_deleted': True}}, 'catalog_pycsw': True, 'storage': {'state': True, 'msg': 'Layer - 17e8b4e4-76e1-4445-8fb0-0ee02038d2b4/fc0fbc26-7125-4927-8b4f-f4713e61105c, deleted 175 items'}, 'polygon_parts_tables': {'is_deleted': True, 'reason': ''}} 
+
+2025-03-31 15:49:46,787 - INFO - The layer: a7fc8bc9-aab0-4915-a241-71eb4fbba764 has been cleaned with the results: {'jobs': {'1f732222-7e47-4284-a2f3-fc861df9db53': {'job_deleted': True, 'task_deleted': True}, '9e330b2f-b317-433e-8085-91181bce14d7': {'job_deleted': True, 'task_deleted': True}, 'fe5d2cb5-f8fe-4249-b887-3fb69bc69f03': {'job_deleted': True, 'task_deleted': True}}, 'catalog_pycsw': True, 'storage': {'state': True, 'msg': 'Layer - a7fc8bc9-aab0-4915-a241-71eb4fbba764/27dc77fa-77b3-4d55-b9ec-b5d209ae205e, deleted 175 items'}, 'polygon_parts_tables': {'is_deleted': True, 'reason': ''}} 
+
+2025-03-31 15:50:52,835 - INFO - The layer: cf159fdc-c8ee-4cd7-9744-168aa8fcf831 has been cleaned with the results: {'jobs': {'8c66b34b-9001-4bc5-8d8c-c7b42e554633': {'job_deleted': True, 'task_deleted': True}, '74c31f78-9d86-41c8-9652-1ba596b0df4e': {'job_deleted': True, 'task_deleted': True}, 'ac0d2485-5734-409d-bc49-5cc66aa4aa2c': {'job_deleted': True, 'task_deleted': True}}, 'catalog_pycsw': True, 'storage': {'state': True, 'msg': 'Layer - cf159fdc-c8ee-4cd7-9744-168aa8fcf831/d8d7c466-d5c7-4b5f-8836-035798bb56df, deleted 175 items'}, 'polygon_parts_tables': {'is_deleted': True, 'reason': ''}} 
+
+2025-03-31 15:51:58,065 - INFO - The layer: 79a19cc0-1631-4c91-98ec-3a89bb3afe42 has been cleaned with the results: {'jobs': {'15ee5d39-db91-481d-8eaa-21cce909f0bc': {'job_deleted': True, 'task_deleted': True}, '90765225-507c-4f2e-bf93-1c06030c5204': {'job_deleted': True, 'task_deleted': True}, '8ff660c6-2db2-414a-b6f4-518020ba66b3': {'job_deleted': True, 'task_deleted': True}}, 'catalog_pycsw': True, 'storage': {'state': True, 'msg': 'Layer - 79a19cc0-1631-4c91-98ec-3a89bb3afe42/8f33d843-8588-4ce9-8aac-15bf952d56c5, deleted 175 items'}, 'polygon_parts_tables': {'is_deleted': True, 'reason': ''}} 
+
+2025-03-31 15:53:01,267 - INFO - The layer: e5324eca-bc4c-4859-a02d-60a7604a1668 has been cleaned with the results: {'jobs': {'bb4d3e9e-192a-4dfc-959a-33d8ad677508': {'job_deleted': True, 'task_deleted': True}, '95fac58e-cd8f-4c87-8d49-aedca13c3d1c': {'job_deleted': True, 'task_deleted': True}, 'e4f9fadd-78f4-44d3-9b16-b31cf1ea222d': {'job_deleted': True, 'task_deleted': True}}, 'catalog_pycsw': True, 'storage': {'state': True, 'msg': 'Layer - e5324eca-bc4c-4859-a02d-60a7604a1668/4477fb61-6e52-4fa2-b68d-c2769d4ce60c, deleted 175 items'}, 'polygon_parts_tables': {'is_deleted': True, 'reason': ''}} 
+
+2025-03-31 15:53:54,521 - INFO - The layer: 163221c0-8cbe-48c5-8c5f-f403730a9ff0 has been cleaned with the results: {'jobs': {'0b7ffa99-fdce-478d-a607-ca652dec9a51': {'job_deleted': True, 'task_deleted': True}}, 'catalog_pycsw': True, 'storage': {'state': True, 'msg': 'Layer - 163221c0-8cbe-48c5-8c5f-f403730a9ff0/a68ef21b-5a9f-4b24-b519-251a18e8258a, deleted 175 items'}, 'polygon_parts_tables': {'is_deleted': True, 'reason': ''}} 
+
+2025-03-31 15:53:56,134 - INFO - results of mapproxy deletion : True 
+
+2025-03-31 15:54:01,134 - INFO - 
+**************************************************** Cleanup script execution completed ****************************************************

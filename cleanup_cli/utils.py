@@ -13,7 +13,7 @@ def delete_layer_from_mapproxy(layers_ids: list, mapproxy_url: str):
     params = {"layerNames": layers_ids}
     try:
         resp = send_delete_request(url=mapproxy_url, params=params)
-        return is_deleted if resp.status_code == 200 else False
+        return is_deleted if resp.status_code == 200 and resp.json() is not [] else False
     except Exception as e:
         return e
 
