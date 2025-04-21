@@ -1,3 +1,3 @@
-mc-automation-tools==1.2.64
+mc-automation-tools==1.2.67
 # todo - upload the latest version of automation - tools after the change (from version 1.2.63 to 1.2.64: I added while loop to query more than 1000 records of tiles)
 
